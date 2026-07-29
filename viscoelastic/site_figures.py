@@ -292,8 +292,8 @@ COLLAPSE = {
 def fig_collapse():
     """Left: the crossover moves all over the place. Right: one multiplication and it doesn't.
     The open rings are out-of-sample predictions, made before those runs existed."""
-    W, H = 880, 430
-    gap, ml, mt, mb = 54, 62, 78, 62
+    W, H = 880, 470
+    gap, ml, mt, mb = 54, 62, 112, 62
     pw = (W - ml - 34 - gap) / 2
     ph = H - mt - mb
 
@@ -333,8 +333,10 @@ def fig_collapse():
                       "After  —  De × ⟨(dθ/dt)²⟩ at the reversal",
                       "flat to under 1% — three different constants", True))
     lx = ml + pw + gap
+    # legend low-left in the right panel: the curves live at ~0.83-1.17, so the band under
+    # 0.76 is the only empty region. Top-left would sit on the teal curve.
     for i, (name, (col, _)) in enumerate(COLLAPSE.items()):
-        yy = mt + 16 + i * 19
+        yy = mt + ph - 58 + i * 19
         body.append(f'<circle cx="{lx+14}" cy="{yy-4}" r="4.5" fill="{col}"/>')
         body.append(txt(lx + 26, yy, name, 11.5, MUTED))
     return svg(W, H, "".join(body))
@@ -356,8 +358,8 @@ def fig_theory():
     Qm = np.array([TH.Q_of(-b, D) for D in des])
     dc = TH.crossover(b)
 
-    W, H = 880, 400
-    gap, ml, mt, mb = 60, 66, 92, 60
+    W, H = 880, 430
+    gap, ml, mt, mb = 60, 66, 112, 60
     pw = (W - ml - 34 - gap) / 2
     ph = H - mt - mb
 
