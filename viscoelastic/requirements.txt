@@ -1,0 +1,4 @@
+# The solver itself needs only numpy. Everything else is for figures and cloud fan-out.
+numpy>=2.0
+matplotlib>=3.8      # figures only; the physics never imports it
+modal>=1.0           # parallel parameter sweeps; the solver runs fine locally without it

@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fourteen years ago, they said someone should check</title>
+<meta name="description" content="In 2012 mathematicians wrote that a microswimmer's best rhythm should change in a fluid with memory, and that someone ought to check. Nobody did. We ran it — and the best strategy reverses.">
+<meta property="og:title" content="Fourteen years ago, they said someone should check">
+<meta property="og:description" content="Nobody ran it. We did — and the best way to swim reverses, with the champion of one fluid doing worse than useless in another.">
+<meta property="og:image" content="figures/hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="figures/vizuara-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --warm:#f9fafb; --card:#ffffff;
+  --ink:#0f1c26; --ink2:#33475a; --muted:#5b7280; --faint:#94a8b4; --line:#e3eaef;
+  --cyan:#1a9fd4; --orange:#ef8f1c; --magenta:#e6009e; --green:#12a594;
+  --serif:'Fraunces',Georgia,serif; --sans:'Inter',ui-sans-serif,system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --wide:1140px; --read:700px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:18.5px;line-height:1.74;font-weight:380;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%;height:auto;display:block}
+a{color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(26,159,212,.35)}
+a:hover{border-bottom-color:var(--cyan)}
+.wrap{max-width:var(--wide);margin:0 auto;padding:0 28px}
+.read{max-width:var(--read);margin-left:auto;margin-right:auto}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.13;letter-spacing:-.018em;margin:0}
+h2{font-size:clamp(31px,4.4vw,46px);margin:0 0 22px}
+h3{font-size:clamp(21px,2.4vw,27px);margin:0 0 12px}
+p{margin:0 0 22px}
+em{font-style:italic}
+strong{font-weight:640}
+.mono{font-family:var(--mono)}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.88);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .in{max-width:var(--wide);margin:0 auto;padding:13px 28px;display:flex;
+  align-items:center;gap:13px}
+nav img{width:26px;height:26px}
+nav .name{font-weight:640;font-size:15.5px;letter-spacing:-.01em}
+nav .sep{color:var(--faint)}
+nav .ctx{font-size:14px;color:var(--muted)}
+
+/* ---------- hero ---------- */
+.hero{padding:78px 0 8px;text-align:center;background:
+  radial-gradient(ellipse 80% 55% at 50% 0%,rgba(26,159,212,.07),transparent 70%)}
+.kicker{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);
+  font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--magenta);
+  background:rgba(230,0,158,.07);border:1px solid rgba(230,0,158,.2);
+  padding:7px 15px;border-radius:100px;margin-bottom:30px}
+.hero h1{font-size:clamp(36px,6.4vw,68px);letter-spacing:-.03em;margin:0 auto 24px;
+  max-width:16ch}
+.hero h1 .flip{font-style:italic;color:var(--magenta)}
+.dek{font-size:clamp(18px,2.2vw,22px);color:var(--ink2);max-width:640px;margin:0 auto;
+  font-weight:340;line-height:1.62}
+.plain{max-width:660px;margin:44px auto 0;padding:28px 32px;background:var(--warm);
+  border:1px solid var(--line);border-radius:16px;text-align:left;font-size:17px;
+  line-height:1.7;color:var(--ink2)}
+.plain b{color:var(--ink);font-weight:620}
+.plain .h{font-family:var(--mono);font-size:11.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--faint);margin-bottom:12px}
+.heroart{max-width:var(--wide);margin:56px auto 0;padding:0 28px}
+.heroart img{border-radius:18px;border:1px solid var(--line)}
+
+/* ---------- sections ---------- */
+section{padding:92px 0;border-top:1px solid var(--line)}
+section.alt{background:var(--warm)}
+.tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--faint);margin-bottom:16px}
+.lede{font-size:clamp(19px,2.2vw,23px);line-height:1.62;color:var(--ink2);font-weight:340}
+
+/* ---------- figures ---------- */
+figure{margin:44px 0}
+figcaption{font-size:14.5px;color:var(--muted);margin-top:15px;line-height:1.62;
+  padding-left:15px;border-left:2px solid var(--line)}
+.art{border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+
+/* ---------- interactive ---------- */
+.sim{background:var(--card);border:1px solid var(--line);border-radius:20px;
+  padding:30px 30px 26px;box-shadow:0 1px 3px rgba(15,28,38,.04),0 12px 34px rgba(15,28,38,.05)}
+.sim h3{font-family:var(--sans);font-size:17px;font-weight:640;margin:0 0 5px}
+.sim .hint{font-size:14.5px;color:var(--muted);margin:0 0 22px}
+.ctl{display:flex;align-items:center;gap:18px;margin:20px 0 6px;flex-wrap:wrap}
+.ctl label{font-size:14px;color:var(--muted);white-space:nowrap}
+input[type=range]{-webkit-appearance:none;appearance:none;flex:1;min-width:200px;height:5px;
+  border-radius:5px;background:linear-gradient(90deg,var(--cyan) 0%,var(--cyan) 42%,
+  var(--magenta) 42%,var(--magenta) 46%,var(--orange) 46%,var(--orange) 100%);outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;
+  border-radius:50%;background:#fff;border:2.5px solid var(--ink);cursor:grab;
+  box-shadow:0 2px 8px rgba(15,28,38,.2)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;
+  border:2.5px solid var(--ink);cursor:grab}
+.deval{font-family:var(--mono);font-size:16px;font-weight:700;min-width:112px;text-align:right}
+.verdict{margin-top:20px;padding:16px 20px;border-radius:12px;font-size:16px;
+  display:flex;align-items:center;gap:12px;transition:background .4s,color .4s}
+.verdict.o{background:rgba(239,143,28,.1);color:#9a5a05}
+.verdict.c{background:rgba(26,159,212,.1);color:#0d5f80}
+.verdict.t{background:rgba(230,0,158,.09);color:#9c0069}
+.verdict b{font-weight:680}
+.btn{font-family:var(--sans);font-size:14px;font-weight:560;padding:9px 17px;border-radius:9px;
+  border:1px solid var(--line);background:#fff;color:var(--ink2);cursor:pointer}
+.btn:hover{border-color:var(--faint)}
+.note{font-size:13px;color:var(--faint);margin-top:14px;line-height:1.55}
+
+/* ---------- story ---------- */
+.story{background:linear-gradient(180deg,#fffdf9 0%,#fbfcfd 100%)}
+.story .beat{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;
+  margin:0 0 68px}
+.story .beat:nth-child(even) .art{order:2}
+.story .art{border-radius:18px;overflow:hidden;border:1px solid var(--line);
+  background:#fff;box-shadow:0 2px 24px rgba(15,28,38,.05)}
+.story .said{font-family:var(--serif);font-size:clamp(21px,2.5vw,27px);line-height:1.42;
+  color:var(--ink);letter-spacing:-.015em;margin:0 0 16px;font-weight:600}
+.story .said .hi{color:var(--magenta);font-style:italic}
+.story .body{font-size:16.5px;line-height:1.68;color:var(--ink2);margin:0}
+.story .body+.body{margin-top:14px}
+.story .num{font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;color:var(--faint);
+  margin-bottom:14px}
+.story .kicker2{display:inline-block;font-family:var(--mono);font-size:11.5px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);
+  background:rgba(26,159,212,.08);padding:6px 13px;border-radius:100px;margin-bottom:8px}
+@media(max-width:760px){
+  .story .beat{grid-template-columns:1fr;gap:22px;margin-bottom:52px}
+  .story .beat:nth-child(even) .art{order:0}
+}
+
+/* ---------- equations ---------- */
+.eq{font-family:var(--mono);font-size:19px;text-align:center;padding:20px 18px;margin:26px 0;
+  background:var(--warm);border:1px solid var(--line);border-radius:12px;color:var(--ink);
+  letter-spacing:.01em}
+.eq sub,.eq sup{font-size:.7em}
+.eq2{margin:26px 0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.eq2>div{display:grid;grid-template-columns:150px 1fr auto;gap:14px;align-items:baseline;
+  padding:14px 20px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:15px}
+.eq2>div:last-child{border-bottom:none}
+.eq2 .lbl{font-family:var(--sans);font-size:13px;color:var(--muted);font-weight:560}
+.eq2 .res{color:var(--magenta);font-weight:700}
+.eq2 .cmt{font-family:var(--sans);font-size:13px;color:var(--faint);grid-column:2/4}
+@media(max-width:640px){.eq{font-size:16px}.eq2>div{grid-template-columns:1fr;gap:4px}}
+
+/* ---------- callouts ---------- */
+.pull{margin:48px auto;padding:30px 34px;background:var(--warm);border-radius:16px;
+  border:1px solid var(--line);border-left:3px solid var(--orange)}
+.pull p:last-child{margin-bottom:0}
+.pull.g{border-left-color:var(--green)} .pull.m{border-left-color:var(--magenta)}
+.pull.m p{color:#9c0069}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin:44px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 22px}
+.stat .n{font-family:var(--mono);font-size:32px;font-weight:700;color:var(--orange);
+  line-height:1;margin-bottom:11px;letter-spacing:-.02em}
+.stat .n.c{color:var(--cyan)} .stat .n.m{color:var(--magenta)} .stat .n.g{color:var(--green)}
+.stat .l{font-size:14.5px;color:var(--muted);line-height:1.5}
+
+.vd{margin:42px 0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+.vr{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:24px 28px;
+  border-bottom:1px solid var(--line);align-items:start}
+.vr:last-child{border-bottom:none}
+.vr .mk{font-size:19px;line-height:1.4;font-weight:700}
+.vr.no{background:#fdf7fa} .vr.no .mk{color:var(--magenta)}
+.vr.yes{background:#f4fbfa} .vr.yes .mk{color:var(--green)}
+.vr h4{margin:0 0 7px;font-size:16.5px;font-weight:620;font-family:var(--sans)}
+.vr p{margin:0;font-size:15px;color:var(--muted);line-height:1.6}
+.cite{font-family:var(--mono);font-size:12.5px;color:var(--faint);margin-top:9px}
+
+blockquote{margin:36px 0;padding:26px 32px;background:#fff;border-radius:14px;
+  border:1px solid var(--line);border-left:3px solid var(--cyan);font-family:var(--serif);
+  font-size:19px;line-height:1.56;font-style:italic}
+blockquote .attr{display:block;margin-top:15px;font-family:var(--mono);font-size:12.5px;
+  font-style:normal;color:var(--muted)}
+
+pre{background:#0f1c26;border-radius:12px;padding:20px 22px;overflow-x:auto;
+  font-family:var(--mono);font-size:13px;line-height:1.75;color:#c9dbe4}
+code{font-family:var(--mono);font-size:.88em;color:#9c0069;background:rgba(230,0,158,.07);
+  padding:2px 6px;border-radius:4px}
+pre code{background:none;padding:0;color:inherit}
+
+footer{padding:64px 0 84px;border-top:1px solid var(--line);color:var(--muted);font-size:15px;
+  background:var(--warm)}
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:34px;margin-bottom:40px}
+.fg h4{font-family:var(--mono);font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--faint);margin:0 0 12px;font-weight:400}
+.fg p{font-size:14.5px;margin:0 0 9px;line-height:1.6}
+.flogo{display:flex;align-items:center;gap:11px;margin-bottom:30px}
+.flogo img{width:28px;height:28px}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}}
+@media(max-width:640px){
+  body{font-size:17px} section{padding:62px 0} .wrap{padding:0 20px}
+  .pull,.sim{padding:24px 22px} .vr{grid-template-columns:1fr;gap:10px;padding:20px}
+  blockquote{padding:20px 22px;font-size:17.5px} .deval{min-width:0}
+}
+</style>
+</head>
+<body>
+
+<nav><div class="in">
+  <img src="figures/vizuara-logo.png" alt="Vizuara">
+  <span class="name">Vizuara</span>
+  <span class="sep">·</span>
+  <span class="ctx">Research note — microswimmers in fluids with memory</span>
+</div></nav>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="kicker">◆ An open question from 2012, finally run</div>
+    <h1>Fourteen years ago, they said someone should check.</h1>
+    <p class="dek">Nobody did. We finally ran it — and the answer isn't a small correction.
+      The best way to swim <span class="flip">reverses</span>.</p>
+
+    <div class="plain">
+      <div class="h">What this is, in plain words</div>
+      <p style="margin:0 0 14px">There is a tiny creature that <b>cannot move in water at
+        all</b> — not slowly, not inefficiently. Exactly zero. That's a theorem from 1977.</p>
+      <p style="margin:0 0 14px">But put it in a fluid that <b>remembers</b> — like mucus or
+        saliva, which stay stretched for a moment after you push them — and suddenly it
+        <b>can</b> swim. That much has been known since 2009.</p>
+      <p style="margin:0">The open question was: <b>if the fluid remembers, does it matter
+        <em>when</em> the creature moves?</b> Not how far it moves, or how hard — just its
+        rhythm. Where it hurries and where it dawdles. In 2012 a group wrote that this
+        probably matters and someone should check. We checked. It matters enormously — and
+        the best rhythm <b>flips into its own opposite</b> depending on how long the fluid's
+        memory is.</p>
+    </div>
+  </div>
+  <div class="heroart"><img src="figures/hero.png" alt="A microscopic two-bead swimmer suspended in a fluid threaded with stretched polymer filaments"></div>
+</div>
+
+<section class="story">
+  <div class="wrap">
+    <div class="read" style="text-align:center;margin-bottom:56px">
+      <div class="kicker2">The short version</div>
+      <h2 style="margin-bottom:16px">A swimmer explains</h2>
+      <p class="lede">Everything below, told by the creature it happened to.</p>
+    </div>
+    <div class="beat"><div class="art"><img src="figures/story/01_meet.png" alt=""></div><div><p class="said">I am the worst swimmer in the world.</p><p class="body">I have one arm. That is the whole inventory. I can open it, and I can close it, and there is nothing else about me that can change.</p><p class="body">People find this funny. I have made peace with it.</p></div></div>
+    <div class="beat"><div class="art"><img src="figures/story/02_stuck.png" alt=""></div><div><p class="said">In water, this gets me <span class='hi'>exactly nowhere</span>.</p><p class="body">Not slowly. Not inefficiently. <em>Nowhere.</em> I open my arm and drift backward. I close it and drift forward by precisely the same amount. The two cancel. They always cancel.</p><p class="body">I have tried rushing. I have tried gliding. I have tried thrashing with everything I have. It changes nothing at all, and that is not bad luck — somebody proved it in 1977 and named a theorem after creatures like me.</p></div></div>
+    <div class="beat"><div class="art"><img src="figures/story/03_defeated.png" alt=""></div><div><p class="said">So for a long time, I didn't bother.</p><p class="body">When the mathematics says your effort is worth precisely zero, effort starts to feel like a joke someone is playing on you.</p></div></div>
+    <div class="beat"><div class="art"><img src="figures/story/04_newfluid.png" alt=""></div><div><p class="said">Then they moved me somewhere the water <span class='hi'>remembers</span>.</p><p class="body">This water is full of long tangled threads. When I push, they stretch. And here is the part that changed everything for me — when I stop pushing, <strong>they are still stretched.</strong></p><p class="body">For a moment afterward, the water is still reacting to what I did a moment ago. It is not responding to me. It is responding to my <em>past</em>.</p><p class="body">I opened my arm. I closed it. And I <strong>moved.</strong></p></div></div>
+    <div class="beat"><div class="art"><img src="figures/story/05_discovery.png" alt=""></div><div><p class="said">Then I worked out the trick. It isn't how hard I move. It's <span class='hi'>when</span>.</p><p class="body">I still can't change where I go — one arm, remember. Same path, out and back, forever. But I <em>can</em> change my rhythm. I can hurry the opening and dawdle on the close. Or dawdle open and hurry closed.</p><p class="body">Same distance. Same effort. Same top speed. Same time. Everything about me identical except <em>when</em> I choose to linger.</p><p class="body">It's worth a third of my speed.</p><p class="body" style="margin-top:18px;font-family:var(--mono);font-size:13.5px;color:var(--magenta);font-weight:700">31.5% — measured at identical everything</p></div></div>
+    <div class="beat"><div class="art"><img src="figures/story/06_victory.png" alt=""></div><div><p class="said">I found my rhythm. I got <span class='hi'>fast</span>.</p><p class="body">I learned to dawdle at exactly the right moment. Half again as fast as swimming plainly — and using slightly <em>less</em> energy than before.</p><p class="body">I was, and I say this with no false modesty whatsoever, magnificent.</p><p class="body" style="margin-top:18px;font-family:var(--mono);font-size:13.5px;color:var(--magenta);font-weight:700">1.4975× the plain stroke, on less energy</p></div></div>
+    <div class="beat"><div class="art"><img src="figures/story/07_wrongfluid.png" alt=""></div><div><p class="said">Then they moved me to thicker water, and I was <span class='hi'>worse than useless</span>.</p><p class="body">Same me. Same rhythm. The one I had spent everything perfecting.</p><p class="body">And I was <strong>slower than if I had never learned anything at all.</strong> Not slower than my best. Slower than a beginner. My perfect stroke had become a handicap.</p><p class="body">I want you to understand how that feels. The thing I was best at was the thing holding me back.</p><p class="body" style="margin-top:18px;font-family:var(--mono);font-size:13.5px;color:var(--magenta);font-weight:700">0.9138× — beaten by the plain stroke</p></div></div>
+    <div class="beat"><div class="art"><img src="figures/story/08_relearn.png" alt=""></div><div><p class="said">It took me a while to see why.</p><p class="body">Thicker water remembers for <em>longer</em>. And past a certain point — past one particular amount of remembering — everything inverts.</p><p class="body">The rhythm that wins in quick-forgetting water is precisely, exactly, the rhythm that loses in slow-forgetting water. Not a little worse. <strong>Backwards.</strong></p><p class="body" style="margin-top:18px;font-family:var(--mono);font-size:13.5px;color:var(--magenta);font-weight:700">the flip happens at De ≈ 0.81</p></div></div>
+    <div class="beat"><div class="art"><img src="figures/story/09_mastery.png" alt=""></div><div><p class="said">So I learned the opposite. And I learned something better than a stroke.</p><p class="body">There is no best way to swim. There is only the best way for the water you happen to be in.</p><p class="body">And here is the cruel part: <strong>I cannot see the water.</strong> I can't feel how long it remembers — that isn't something you can sense in any single moment. It only shows itself in how the water answers you, over time.</p><p class="body">So I stopped hunting for the perfect stroke. I started paying attention instead.</p></div></div>
+    <div class="read" style="text-align:center;padding-top:8px">
+      <p class="body" style="font-size:17px">That is the whole result. The rest of this page is how we know it — and every place we tried to prove ourselves wrong.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap read">
+    <div class="tag">01 — The creature</div>
+    <h2>A scallop cannot swim</h2>
+    <p class="lede">Not "swims badly." Cannot. It's a theorem.</p>
+    <p>Picture the simplest swimmer you can draw: a hinge. Two shells that open and close.
+      At our size it works — snap them shut, squirt water, move forward.</p>
+    <p>Shrink it to the size of a bacterium and something strange happens. At that scale water
+      feels like thick honey, and momentum effectively stops existing. Stop pushing and you
+      stop <em>instantly</em> — you don't coast, not by an atom's width.</p>
+    <p>In that world, opening and closing achieves nothing. The creature drifts forward as it
+      closes, and slides exactly back as it opens. Fast, slow, jerky, smooth — doesn't matter.
+      Net movement is <strong>exactly zero</strong>. Edward Purcell pointed this out in a
+      famous 1977 lecture, and it's been called the <em>scallop theorem</em> ever since.</p>
+    <p>The reason is almost unfairly simple: the creature has only one thing it can change —
+      how far open it is. So on the way back it must retrace the same shapes in reverse. And
+      in honey-world, retracing your shapes backwards exactly undoes your progress.</p>
+    <div class="pull g">
+      <p>Our simulated swimmer obeys this perfectly. Every stroke we tested in an ordinary
+        fluid returns <strong class="mono">0.000</strong> — not "small", not "within error",
+        but exactly zero to the last digit the computer holds. That's how we know the
+        simulation is honest before asking it anything interesting.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <figure>
+      <div class="art"><img src="figures/scallop.png" alt="Two scallops: one in still clear fluid going nowhere, one in a fluid threaded with elastic filaments and visibly displaced"></div>
+      <figcaption>Left: in ordinary fluid the scallop goes nowhere, no matter how it flaps.
+        Right: give the fluid a memory and the same motion carries it forward.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap read">
+    <div class="tag">02 — The loophole</div>
+    <h2>Unless the fluid remembers</h2>
+    <p>Water forgets instantly. Push it and it moves; stop and it stops. It keeps no record of
+      what you did a moment ago.</p>
+    <p>Many real fluids aren't like that. Mucus, saliva, blood, cytoplasm, shampoo — these are
+      full of long tangled molecules that stretch when pushed and take a while to relax. Such
+      a fluid <em>remembers</em>. Push it, let go, and for a moment it's still quietly pushing
+      back, because the molecules inside are still un-stretching.</p>
+    <p>That memory breaks Purcell's proof. The argument needed the fluid to respond only to
+      what the swimmer is doing <em>right now</em>. If it also responds to what the swimmer did
+      a moment ago, then coming back is no longer the exact undoing of going out. The scallop
+      moves.</p>
+    <p>Physicists measure how long a fluid remembers with a single number — the
+      <strong>Deborah number</strong>. Low means it forgets fast. High means it holds on.
+      Remember that word; the whole finding is about it.</p>
+  </div>
+  <div class="wrap">
+    <figure>
+      <div class="art"><img src="figures/memory.png" alt="Polymer chains shown relaxed, then stretched taut, then relaxing again"></div>
+      <figcaption>What "memory" physically is. Long tangled molecules sit relaxed, get pulled
+        taut when the fluid is pushed, and take time to coil back. During that delay the fluid
+        is still pushing back on its own — reacting not to what you are doing, but to what you
+        did a moment ago.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap read">
+    <div class="tag">03 — The question nobody ran</div>
+    <h2>Does the <em>rhythm</em> matter?</h2>
+    <p>Here's the thing about our scallop: it has one control. More open, or more closed.
+      That's the entire repertoire.</p>
+    <p>So the <em>shape</em> of its journey is fixed — out to fully open, back to fully closed,
+      forever. The only freedom left is <strong>timing</strong>. When to hurry. When to dawdle.
+      Where in the stroke to spend its time.</p>
+    <p>In water, timing provably cannot matter. But in a fluid that's keeping track of
+      <em>when</em> things happened — maybe it does.</p>
+  </div>
+  <div class="wrap">
+    <figure>
+      <div class="art"><img src="figures/rhythm.png" alt="Two identical paths marked with beads, crowded at opposite ends, with elastic filaments responding where the beads linger"></div>
+      <figcaption>What "rhythm" means here. Both paths are the same length and the same shape —
+        the beads are evenly spaced in time, so where they crowd together the swimmer is moving
+        slowly. Crowd them at one end or the other and you have two completely different
+        strategies built from identical motion.</figcaption>
+    </figure>
+  </div>
+  <div class="wrap read">
+    <p>In 2012, a group optimising a different microswimmer noticed exactly this gap and wrote
+      it down:</p>
+    <blockquote>
+      For viscoelastic properties, this may not be the optimum phase difference, due to the
+      dependence of the fluid stress on its deformation history.
+      <span class="attr">Montenegro-Johnson, Smith, Smith, Loghin &amp; Blake ·
+        European Physical Journal E <strong>35</strong>, 111 (2012), §4.3</span>
+    </blockquote>
+    <p>Translated: <em>in a fluid with memory, the best rhythm is probably different — someone
+      should check.</em></p>
+    <p>Nobody checked. For fourteen years.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="read">
+      <div class="tag">04 — See it for yourself</div>
+      <h2>What "reverses" actually means</h2>
+      <p class="lede">Not that one rhythm is faster. That <em>which</em> rhythm is faster
+        swaps over — completely — depending on the fluid.</p>
+    </div>
+
+    <figure style="margin:34px 0 12px">
+      <div class="art"><img src="figures/reversal.png" alt="Two racers swapping their leader at a crossing point"></div>
+      <figcaption>The shape of the finding. On one side of a critical point, one rhythm leads.
+        On the other side, the other does. They swap.</figcaption>
+    </figure>
+
+    <div class="read">
+      <p>Here is the whole story in ninety seconds — and then you can drive it yourself.</p>
+    </div>
+
+    <figure style="margin:30px auto 42px;max-width:620px">
+      <video controls playsinline preload="metadata" poster="figures/swimmer-reversal-poster.png"
+             style="width:100%;border-radius:16px;border:1px solid var(--line);display:block">
+        <source src="figures/swimmer-reversal.mp4" type="video/mp4">
+      </video>
+      <figcaption>The race, with the fluid's memory dialled up underneath it. Watch the lead
+        change hands around the magenta mark.</figcaption>
+    </figure>
+
+    <div class="read">
+      <p>Now try it yourself. Drag the slider to change how long the fluid remembers, and watch
+        the lead change hands on the real measured data.</p>
+    </div>
+
+    <div class="sim" style="margin-top:34px">
+      <h3>The race</h3>
+      <p class="hint">Both swimmers open and close by exactly the same amount, use exactly the
+        same energy, hit the same top speed, and take the same time per stroke. The
+        <b style="color:var(--orange)">orange</b> one dawdles while closed; the
+        <b style="color:var(--cyan)">cyan</b> one dawdles while open. That is the only
+        difference between them.</p>
+
+      <svg id="race" viewBox="0 0 900 300" style="width:100%">
+        <rect x="0" y="0" width="900" height="300" fill="#fbfcfd" rx="12" stroke="#e3eaef"/>
+        <line x1="60" y1="46" x2="60" y2="262" stroke="#c9d6de" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <text x="60" y="34" font-size="11.5" fill="#94a8b4" text-anchor="middle" font-family="ui-monospace,monospace">START</text>
+        <g id="laneO">
+          <text x="16" y="96" font-size="12" fill="#ef8f1c" font-weight="700" font-family="ui-sans-serif,system-ui">A</text>
+          <line id="trailO" x1="60" y1="108" x2="60" y2="108" stroke="#ef8f1c" stroke-width="2.5" opacity=".28"/>
+          <g id="swimO"><line id="rodO" x1="0" y1="108" x2="60" y2="108" stroke="#0f1c26" stroke-width="2.5" opacity=".45"/>
+            <circle id="b1O" cx="0" cy="108" r="9" fill="#ef8f1c"/>
+            <circle id="b2O" cx="60" cy="108" r="16" fill="#ef8f1c" opacity=".72"/></g>
+        </g>
+        <g id="laneC">
+          <text x="16" y="206" font-size="12" fill="#1a9fd4" font-weight="700" font-family="ui-sans-serif,system-ui">B</text>
+          <line id="trailC" x1="60" y1="218" x2="60" y2="218" stroke="#1a9fd4" stroke-width="2.5" opacity=".28"/>
+          <g id="swimC"><line id="rodC" x1="0" y1="218" x2="60" y2="218" stroke="#0f1c26" stroke-width="2.5" opacity=".45"/>
+            <circle id="b1C" cx="0" cy="218" r="9" fill="#1a9fd4"/>
+            <circle id="b2C" cx="60" cy="218" r="16" fill="#1a9fd4" opacity=".72"/></g>
+        </g>
+        <text id="dO" x="884" y="112" font-size="13" fill="#ef8f1c" text-anchor="end" font-weight="700" font-family="ui-monospace,monospace"></text>
+        <text id="dC" x="884" y="222" font-size="13" fill="#1a9fd4" text-anchor="end" font-weight="700" font-family="ui-monospace,monospace"></text>
+        <text x="884" y="34" font-size="11.5" fill="#94a8b4" text-anchor="end" font-family="ui-monospace,monospace">DISTANCE</text>
+      </svg>
+
+      <div class="ctl">
+        <label>How long the fluid remembers</label>
+        <input id="de" type="range" min="0" max="1000" value="180">
+        <span class="deval" id="dev"></span>
+      </div>
+      <div class="ctl" style="margin-top:2px">
+        <button class="btn" id="reset">↺ Restart race</button>
+        <span style="font-size:13.5px;color:var(--muted)">Try dragging slowly across the
+          middle of the slider.</span>
+      </div>
+      <div class="verdict" id="verdict"></div>
+      <p class="note">Swimming speeds come from our measured simulation data, interpolated
+        between the Deborah numbers we actually ran. The forward drift is magnified about
+        4,000× so a race that really takes hours of stroking is visible in seconds — the
+        <em>ratio</em> between the two swimmers is exact, the absolute speed is not.</p>
+    </div>
+
+    <div class="read" style="margin-top:44px">
+      <p>That's what the finding is. Not that one rhythm is good and another is bad — but that
+        <strong>which one is better depends on the fluid</strong>, and it swaps over
+        completely as you cross a particular point.</p>
+      <p>And here's the part that makes it more than a curiosity: <strong>the swimmer has no
+        way of feeling which fluid it is in.</strong> Memory isn't something you can sense at a
+        single instant; it only shows up in how the fluid responds over time. So a swimmer
+        can't just look around and pick the right rhythm. It would have to work it out from
+        experience.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap read">
+    <div class="tag">05 — The experiment</div>
+    <h2>Same motion. Same energy. Different rhythm.</h2>
+    <p>The hard part of a question like this is cheating. If one swimmer beats another, the
+      boring explanation is usually that it moved further, or pushed harder, or swung faster.
+      Any of those makes the comparison meaningless.</p>
+    <p>So we built the comparison to make cheating impossible. Every candidate is forced to
+      have <strong>the same opening distance, the same energy, the same top speed and the same
+      period.</strong> The only thing allowed to vary is where in the stroke the swimmer spends
+      its time.</p>
+  </div>
+  <div class="wrap">
+    <figure>
+      <img src="figures/strokes.svg" alt="Two stroke profiles with identical range and period, differing only in where the evenly-spaced time markers bunch together">
+      <figcaption>Both swimmers trace the same path between the same two extremes. The dots are
+        evenly spaced in time — where they bunch up, the swimmer is moving slowly. Everything
+        measurable about these two strokes is identical except that.</figcaption>
+    </figure>
+  </div>
+  <div class="wrap read">
+    <div class="stats">
+      <div class="n" style="display:none"></div>
+      <div class="stat"><div class="n">31.5%</div>
+        <div class="l">difference in swimming speed between those two rhythms — with every
+          other property held identical</div></div>
+      <div class="stat"><div class="n g">0.000</div>
+        <div class="l">what both of them do in ordinary water, exactly — confirming they're
+          still true scallops</div></div>
+    </div>
+    <p>So rhythm matters, and it matters a lot. A third of your swimming speed is decided by
+      nothing but <em>when</em> you choose to move.</p>
+  </div>
+  <div class="wrap">
+    <figure>
+      <div class="art"><img src="figures/stress_field.png" alt="Simulation snapshots of elastic stress around the swimmer for two rhythms at matched configurations"></div>
+      <figcaption>Why it happens, straight from the simulation. Colour shows elastic stress
+        stored in the fluid — pale is relaxed, saturated is stretched taut. Both rows are shown
+        in the <em>same four configurations</em>, reached by different rhythms: the swimmers are
+        geometrically identical in each column, so any difference in the surrounding stress is
+        purely what the fluid remembers about how they got there. That memory is the extra
+        speed.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap read">
+    <div class="tag">06 — The finding</div>
+    <h2>The best rhythm <em>reverses</em></h2>
+    <p class="lede">This is the part that isn't in any textbook, and as far as two independent
+      literature searches could establish, isn't in any paper either.</p>
+    <p>Fluids differ in how long they remember. Saliva forgets quickly; mucus holds on much
+      longer. So we asked: does the winning rhythm stay the winning rhythm as you change that?</p>
+    <p>It does not. It flips.</p>
+  </div>
+  <div class="wrap">
+    <figure>
+      <img src="figures/crossover.svg" alt="Ratio of the two rhythms' speeds against the fluid's memory, crossing 1.0 at De 0.81">
+      <figcaption>Below the crossing point one rhythm wins; above it, the opposite one does. At
+        the crossing they tie exactly. The swimmer's optimal strategy inverts as the fluid's
+        memory lengthens.</figcaption>
+    </figure>
+  </div>
+  <div class="wrap">
+    <figure>
+      <div class="art"><img src="figures/mechanism.png" alt="Top row: stress difference contours at three Deborah numbers. Bottom row: running displacement through the cycle, with the winner swapping."></div>
+      <figcaption>The reversal caught in the act. <strong>Bottom row</strong> — distance
+        travelled as the stroke proceeds, for both rhythms. At De = 0.40 the cyan swimmer
+        finishes ahead; at De = 2.00 the orange one does; at De = 0.81 they finish level, to
+        four decimal places. That is the whole finding in three panels. <strong>Top row</strong>
+        — the two swimmers are geometrically <em>identical</em> here, so the colour shows only
+        what the fluid remembers differently about how each of them arrived.</figcaption>
+    </figure>
+  </div>
+  <div class="wrap read">
+    <p>The middle panel is worth dwelling on. We picked De = 0.81 from a completely separate
+      calculation, then ran the simulation there and got a ratio of <strong>1.0002</strong> —
+      the two opposite rhythms finishing level to within two parts in ten thousand.</p>
+    <p>In a short-memory fluid the swimmer should dawdle while <em>open</em>. In a long-memory
+      fluid it should do the exact opposite. Not a little better or worse — the ranking turns
+      over completely.</p>
+    <p>Then we pushed harder. We searched thousands of rhythms, kept only those spending no
+      more energy than a plain stroke, found the best one for each kind of fluid — and then
+      took each champion and tested it in <em>every</em> fluid.</p>
+  </div>
+  <div class="wrap">
+    <figure>
+      <img src="figures/transfer.svg" alt="Grid showing each optimised rhythm scored in five different fluids, diagonal highlighted">
+      <figcaption>Every champion wins its own fluid and loses the others. Read the top-right
+        corner carefully.</figcaption>
+    </figure>
+  </div>
+  <div class="wrap read">
+    <div class="pull m">
+      <p><strong>The champion of the short-memory fluid scores 0.914 in the long-memory
+        fluid.</strong> Below 1.0 means it is beaten by the plain, unoptimised stroke. The
+        cleverest thing you can do in one fluid is <em>worse than not being clever at all</em>
+        in the other.</p>
+    </div>
+    <p>That's what makes this matter. There is no such thing as "the best stroke" for this
+      swimmer. Being highly optimised only helps if you're optimised for the fluid you're
+      actually in — and being optimised for the wrong one is an active handicap.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1.4975×</div>
+        <div class="l">how much the best rhythm beats the plain stroke by — using <em>less</em>
+          energy — in a short-memory fluid</div></div>
+      <div class="stat"><div class="n m">0.9138×</div>
+        <div class="l">what that same champion scores in a long-memory fluid: worse than doing
+          nothing clever</div></div>
+      <div class="stat"><div class="n c">De ≈ 0.81</div>
+        <div class="l">where the two strategies tie exactly, and the optimum turns over</div></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <figure>
+      <img src="figures/fraction.svg" alt="Share of sampled rhythms beating the plain stroke, falling from 36 percent to 2 percent as memory grows">
+      <figcaption>A quieter pattern in the same data: the longer the fluid's memory, the harder
+        the plain stroke is to beat. Clever timing pays off most in fluids that forget quickly.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap read">
+    <div class="tag">07 — The second proof</div>
+    <h2>Then we did it again, with a pen</h2>
+    <p class="lede">A simulation can be wrong in ways that look convincing. So we put the
+      simulator aside and derived the effect on paper. The two have to agree, or one of them
+      is lying.</p>
+    <p>Here is the whole argument. In a fluid with memory, the stress doesn't follow the
+      swimmer's motion instantly — it follows a smoothed, delayed copy of it. Mathematically
+      that delay is a simple filter, and for each harmonic <em>n</em> of the stroke it does
+      this:</p>
+    <div class="eq">s<sub>n</sub> &nbsp;=&nbsp; i·n·g<sub>n</sub> / (1 + i·n·De)</div>
+    <p><em>g</em> is the swimmer's shape, <em>s</em> is the stress the fluid stores, and
+      <em>De</em> is how long the fluid remembers. The swimmer's speed is that stored stress
+      multiplied by how strongly its shape couples to the fluid — and that coupling itself
+      changes as the swimmer opens and closes. Multiply those out and add up one full stroke,
+      and the answer splits into exactly two pieces:</p>
+    <div class="eq2">
+      <div><span class="lbl">a constant coupling</span> ∮ s dt <span class="res">= 0</span>
+        <span class="cmt">swims nowhere, ever</span></div>
+      <div><span class="lbl">the PAIR term</span> ∮ g·s dt <span class="res">= P(De)</span>
+        <span class="cmt">two waves interacting</span></div>
+      <div><span class="lbl">the TRIPLE term</span> ∮ g²·s dt <span class="res">= Q(De)</span>
+        <span class="cmt">three waves interacting</span></div>
+    </div>
+    <p>Now the key step. Write the stroke as a sum of harmonics — a standard expansion gives
+      the amount of each harmonic as a Bessel function, <strong>g<sub>n</sub> =
+      J<sub>n−1</sub>(b)</strong>. Flipping the rhythm means flipping the sign of <em>b</em>,
+      and Bessel functions obey <strong>J<sub>k</sub>(−b) = (−1)<sup>k</sup>J<sub>k</sub>(b)</strong>.
+      So flipping the rhythm changes some <em>signs</em> but leaves every harmonic's
+      <em>size</em> untouched.</p>
+    <p>That settles it. The pair term depends only on the sizes — so it is
+      <strong>mathematically identical for both rhythms</strong>. It cannot tell them apart,
+      and cannot possibly produce a reversal. The triple term does depend on the signs, and
+      flips exactly. <strong>So the reversal has to come from the triple term, and it happens
+      precisely where that term passes through zero.</strong></p>
+  </div>
+  <div class="wrap">
+    <figure>
+      <img src="figures/theory.svg" alt="Left panel: pair term for both rhythms lying exactly on top of each other. Right panel: triple term as equal and opposite curves crossing zero.">
+      <figcaption>The prediction, computed with Fourier algebra and no simulation whatsoever.
+        Left: the two rhythms' pair terms lie exactly on top of one another — the difference is
+        0.0e+00, not "small". Right: their triple terms are mirror images, and both vanish at
+        the same point. That point is the reversal.</figcaption>
+    </figure>
+  </div>
+  <div class="wrap read">
+    <div class="stats">
+      <div class="stat"><div class="n g">0.0e+00</div>
+        <div class="l">difference between the two rhythms' pair terms — exactly zero, so this
+          term can never reverse anything</div></div>
+      <div class="stat"><div class="n m">Q(+b) = −Q(−b)</div>
+        <div class="l">the triple term flips exactly, to machine precision, and crosses
+          zero</div></div>
+    </div>
+    <div class="pull g">
+      <p><strong>Two completely independent routes, same answer.</strong> One solves the full
+        fluid equations on a grid, tens of thousands of CPU-seconds. The other is a few lines
+        of algebra that runs instantly and never touches a fluid solver. They agree that the
+        reversal exists, and they agree on what causes it.</p>
+    </div>
+    <p>The algebra also explains something that had been puzzling us. Early on we built a
+      simple toy model of this system, and it stubbornly refused to produce any reversal at
+      all no matter what we tried. Now we know why: <strong>that toy only ever had the pair
+      term</strong> — the very piece that provably cannot reverse. It wasn't a bug. It was the
+      theorem, telling us something we hadn't yet worked out.</p>
+    <p>And the two approaches agree on the limits too, which is where this gets uncomfortable.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap read">
+    <div class="tag">08 — A scaling law, and its limits</div>
+    <h2>Where the reversal sits, and what sets it</h2>
+    <p class="lede">The reversal happens at a particular point. Change the swimmer and that
+      point moves — by 20 to 40%. So is there a rule for where it lands?</p>
+    <p>For one family of rhythms, there is. The Deborah number — the standard way of asking
+      "how long does this fluid remember, compared to how fast is it being pushed?" — uses the
+      swimmer's <em>nominal</em> stroke rate. But a swimmer that dawdles and hurries
+      <strong>isn't moving at its nominal rate</strong>; that's the entire point of it. Multiply
+      instead by the true mean-square rate of deformation and the crossing point stops moving.</p>
+  </div>
+  <div class="wrap">
+    <figure>
+      <img src="figures/collapse.svg" alt="Left: crossover point varies widely with rhythm strength. Right: after multiplying by mean-square phase speed, all curves are flat">
+      <figcaption>Left: the reversal point wanders by 21–32% as the rhythm changes. Right: one
+        multiplication and it's flat to under 1% — for three different swimmers, each landing on
+        its own constant. The hollow rings are out-of-sample predictions, computed and written
+        down <em>before</em> those simulations were run.</figcaption>
+    </figure>
+  </div>
+  <div class="wrap read">
+    <div class="pull g">
+      <p style="font-family:var(--mono);font-size:19px;text-align:center;margin-bottom:16px">
+        De · ⟨(dθ/dt)²⟩ = K</p>
+      <p style="margin:0">The reversal always happens at the same value of this quantity. K
+        depends on the swimmer and the fluid — but <strong>not at all on the rhythm</strong>.
+        The rhythm's entire influence is captured by that one factor.</p>
+    </div>
+    <p>Two things make this more than curve-fitting. First, <strong>the correction wasn't
+      fitted</strong> — the mean-square rate is calculated exactly from the stroke, with no free
+      parameters to tune. Second, we used it to <strong>predict two crossover points before
+      running them</strong>, at rhythm strengths outside anything we'd tested. They came in at
+      0.4% and 0.3%.</p>
+    <div class="stats">
+      <div class="stat"><div class="n g">0.35%</div>
+        <div class="l">how flat the collapsed quantity is, across a 3.2× range of rhythm
+          strength</div></div>
+      <div class="stat"><div class="n">±0.4%</div>
+        <div class="l">error on two crossover points predicted in advance, outside the tested
+          range</div></div>
+      <div class="stat"><div class="n c">3 / 3</div>
+        <div class="l">different swimmers where the same law holds, each with its own
+          constant</div></div>
+    </div>
+
+    <div class="pull m">
+      <p><strong>And here is where it stops.</strong> We tried to generalise this to other
+        rhythm shapes, and it does not survive. Modulating a <em>different</em> harmonic gives
+        the same predicted mean-square rate — but no reversal at all, anywhere we looked. So
+        this is a scaling law <em>within one family of rhythms</em>, not a universal rule.
+        We tested that specifically because we wanted it to be universal, and it isn't.</p>
+    </div>
+    <p>Worth being precise about what broke, because most of our own test was badly designed:
+      for rhythms that modulate an even harmonic, the two strokes we were comparing are not
+      opposites at all — that comparison was meaningless and we should have caught it first.
+      Only one clean counter-test remained, and it failed. One is enough.</p>
+    <p style="color:var(--muted);font-size:15.5px">A separate pen-and-paper calculation — no
+      simulation involved — independently predicted this same failure before the simulations
+      confirmed it. Two methods agreeing that a result is narrower than hoped is still two
+      methods agreeing.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap read">
+    <div class="tag">09 — Being straight with you</div>
+    <h2>What's new here, and what isn't</h2>
+    <p class="lede">Most of the ingredients in this story were already known. Being precise
+      about which ones is what makes the remaining piece worth anything.</p>
+    <div class="vd">
+      <div class="vr no"><div class="mk">✗</div><div>
+        <h4>That a scallop can swim in a fluid with memory — not ours</h4>
+        <p>Established physics. The scallop theorem's failure in viscoelastic fluids has been
+          understood for well over a decade.</p></div></div>
+      <div class="vr no"><div class="mk">✗</div><div>
+        <h4>That rhythm can matter at all — not ours</h4>
+        <p>Stated explicitly in 2009, including the exact mathematical trick we use to hold the
+          shape fixed while varying the timing, and a worked example. We use their method and
+          cite it. It would be wrong to present this framing as new.</p>
+        <div class="cite">Fu, Wolgemuth &amp; Powers · Physics of Fluids 21, 033102 (2009)</div></div></div>
+      <div class="vr yes"><div class="mk">✓</div><div>
+        <h4>That the <em>optimum itself</em> reverses with the fluid's memory — new</h4>
+        <p>Speed depending on the fluid is old news. The best <em>strategy</em> flipping over is
+          a different claim, and two independent adversarial literature searches — briefed to
+          prove it already published, and required to log every query — could not find it. A
+          structured search of the arXiv for optimal-stroke work in viscoelastic fluids returns
+          zero results.</p></div></div>
+      <div class="vr yes"><div class="mk">✓</div><div>
+        <h4>That the wrong-fluid champion is worse than useless — new</h4>
+        <p>No precedent found at all. Nobody appears to have taken strokes optimised for one
+          fluid and scored them in another.</p></div></div>
+    </div>
+    <div class="pull">
+      <p>The fair summary: <strong>we did not discover the mechanism. We ran the experiment
+        that was proposed in 2012 and never performed.</strong> The surprise is that the answer
+        isn't "the optimum shifts a bit" — it's that the optimum turns over, and backs the
+        wrong horse hard enough to lose to doing nothing.</p>
+    </div>
+    <p style="color:var(--muted);font-size:15.5px">Two caveats stated up front. One 2025 paper
+      in <em>Chinese Journal of Physics</em> remains behind a paywall and unread; a title-level
+      risk we could not close. And a separate 2026 result reports a similar-looking reversal
+      driven by elasticity in the swimmer's <em>body</em> rather than the fluid — different
+      mechanism, same phenomenology, worth distinguishing carefully.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap read">
+    <div class="tag">10 — How hard we tried to break it</div>
+    <h2>Three results died before this one lived</h2>
+    <p>Numerical results are easy to fool yourself with, and we did — repeatedly. Every claim
+      here survived a deliberate attempt to kill it. Several earlier claims did not, and were
+      thrown away.</p>
+    <p><strong>A result we retracted.</strong> An optimiser reported a stroke beating the
+      standard one by 3.4%. It was resolution-stable and passed every control. Still wrong:
+      two-thirds of that "win" was simply a slightly wider swing, and under a different but
+      equally fair way of measuring effort the winner actually <em>lost</em>. We killed it and
+      rebuilt the experiment so that kind of cheating was impossible by construction.</p>
+    <p><strong>A physics result we retracted.</strong> We reported that swimming speed peaks at
+      a particular fluid memory then levels off. It doesn't. We'd reused a convergence check far
+      outside where it was established; the simulation simply hadn't run long enough, and the
+      error grew with the parameter, manufacturing a peak that was never there.</p>
+    <p><strong>A prediction of ours that failed.</strong> We predicted the rhythm effect must
+      vanish in a weak-memory fluid. Our reasoning was wrong. Chasing why is what uncovered the
+      reversal — the most valuable thing on this page came out of being mistaken.</p>
+  </div>
+  <div class="wrap">
+    <figure>
+      <img src="figures/convergence.svg" alt="Both headline results recomputed at four higher resolutions, barely moving">
+      <figcaption>What survival looks like. Both headline numbers recomputed with four times
+        finer time resolution, a finer grid, a larger domain, and all three at once. The
+        reversal holds to two parts in ten thousand.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap read">
+    <div class="tag">11 — Reproduce it</div>
+    <h2>The whole thing is about 300 lines</h2>
+    <p>No commercial fluid-dynamics package was used. The simulation is written from scratch in
+      Python and NumPy — a spectral solver for the fluid, a standard model for the elastic
+      memory, and two immersed beads for the swimmer. It runs on ordinary hardware; the
+      parameter searches were spread across cloud CPUs to save wall-clock time, not because
+      they needed anything exotic.</p>
+    <pre><code>python3 rhythm_modal.py          # same path, different rhythm — the 31.5%
+python3 crossover_modal.py       # where the optimum flips
+python3 constraint_modal.py      # search at matched energy, five fluids
+python3 winners_verify_modal.py  # refine every headline number</code></pre>
+    <p>Every chart here is generated directly from the result files those scripts write.
+      Nothing is typed in by hand, so the figures cannot drift from the data. The
+      illustrations — the swimmer at the top, the two scallops — are artist's impressions and
+      labelled as such. <strong>No chart on this page was drawn by a generative model.</strong></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap read">
+    <div class="flogo"><img src="figures/vizuara-logo.png" alt="Vizuara"><strong>Vizuara</strong></div>
+    <div class="fg">
+      <div><h4>The swimmer</h4>
+        <p>Two unequal spheres on a rod, in two dimensions, in a fluid with elastic memory
+          (Oldroyd-B) under mild confinement (Brinkman screening).</p></div>
+      <div><h4>Checks it passes</h4>
+        <p>Scallop theorem exactly 0. Translation invariance to 7 digits. Bead-swap
+          antisymmetry at 3×10⁻¹⁸. Force balance at 10⁻¹⁶.</p></div>
+      <div><h4>Standing on</h4>
+        <p>Purcell (1977) · Fu, Wolgemuth &amp; Powers (2009) · Montenegro-Johnson et al.
+          (2012) · Elfring &amp; Lauga (2015)</p></div>
+    </div>
+    <p style="font-size:14px;color:var(--faint);border-top:1px solid var(--line);padding-top:24px">
+      A computational result, not a peer-reviewed publication. Everything here is open to being
+      wrong, and the fastest way to find out is for someone to try to break it. Corrections
+      welcome and will be published.</p>
+  </div>
+</footer>
+
+<script>
+// measured swimming speed per cycle at each Deborah number we actually ran:
+// [De, |dx| for the lingers-closed rhythm, |dx| for the lingers-open rhythm]
+const DATA=[[0.2,4.1167e-4,4.2972e-4],[0.5,8.9881e-4,9.4494e-4],[0.6,1.0402e-3,1.0816e-3],
+[0.7,1.1729e-3,1.1993e-3],[0.8,1.2958e-3,1.2983e-3],[0.9,1.4082e-3,1.3802e-3],
+[1.0,1.5095e-3,1.4467e-3],[1.2,1.6799e-3,1.5424e-3],[1.5,1.8657e-3,1.6214e-3],
+[2.0,2.0497e-3,1.6679e-3],[3.0,2.2061e-3,1.6783e-3]];
+const DMIN=0.2,DMAX=3.0,GAIN=4000,X0=60,XMAX=856;
+
+function speeds(De){                       // log-linear interpolation between measured points
+  if(De<=DATA[0][0])return[DATA[0][1],DATA[0][2]];
+  const L=DATA[DATA.length-1];if(De>=L[0])return[L[1],L[2]];
+  for(let i=0;i<DATA.length-1;i++){const a=DATA[i],b=DATA[i+1];
+    if(De>=a[0]&&De<=b[0]){const f=(Math.log(De)-Math.log(a[0]))/(Math.log(b[0])-Math.log(a[0]));
+      return[a[1]+f*(b[1]-a[1]),a[2]+f*(b[2]-a[2])];}}
+  return[L[1],L[2]];
+}
+const $=id=>document.getElementById(id);
+const sl=$('de'),dev=$('dev'),vt=$('verdict');
+let De=0.5,xO=0,xC=0,t=0,last=null;
+
+function sliderToDe(v){return Math.exp(Math.log(DMIN)+(v/1000)*(Math.log(DMAX)-Math.log(DMIN)));}
+function reset(){xO=0;xC=0;t=0;}
+
+function draw(now){
+  if(last===null)last=now;
+  let dt=Math.min((now-last)/1000,0.05);last=now;
+  t+=dt*1.15;
+  const[sO,sC]=speeds(De);
+  xO+=sO*GAIN*dt; xC+=sC*GAIN*dt;
+  if(Math.max(xO,xC)>XMAX-X0-90){const k=(XMAX-X0-90)/Math.max(xO,xC);xO*=k;xC*=k;}
+
+  // theta(t)=t+b sin t  ->  opening d = 1 + 0.35 cos(theta); b=+0.5 lingers closed
+  for(const[b,sfx,y]of[[0.5,'O',108],[-0.5,'C',218]]){
+    const th=t+b*Math.sin(t), d=1+0.35*Math.cos(th), half=d*46;
+    const cx=X0+(sfx==='O'?xO:xC);
+    $('b1'+sfx).setAttribute('cx',cx-half); $('b2'+sfx).setAttribute('cx',cx+half);
+    const rod=$('rod'+sfx); rod.setAttribute('x1',cx-half); rod.setAttribute('x2',cx+half);
+    $('trail'+sfx).setAttribute('x2',cx);
+  }
+  $('dO').textContent=xO.toFixed(0); $('dC').textContent=xC.toFixed(0);
+  requestAnimationFrame(draw);
+}
+
+function update(){
+  De=sliderToDe(+sl.value);
+  const[sO,sC]=speeds(De);const r=sO/sC;
+  dev.textContent='De = '+De.toFixed(2);
+  let cls,msg;
+  if(Math.abs(r-1)<0.006){cls='t';msg='<b>Dead heat.</b> This is the crossover — right here the two opposite rhythms are exactly as good as each other.';}
+  else if(r>1){cls='o';msg='<b>A wins</b> — the swimmer that dawdles while <b>closed</b>, by '+((r-1)*100).toFixed(0)+'%. Long memory rewards waiting in the closed position.';}
+  else{cls='c';msg='<b>B wins</b> — the swimmer that dawdles while <b>open</b>, by '+((1/r-1)*100).toFixed(0)+'%. Short memory rewards the opposite strategy.';}
+  vt.className='verdict '+cls; vt.innerHTML=msg;
+}
+sl.addEventListener('input',()=>{update();reset();});
+$('reset').addEventListener('click',reset);
+update(); requestAnimationFrame(draw);
+
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.06,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('section .wrap > *, figure').forEach((el,i)=>{
+  el.classList.add('reveal');el.style.transitionDelay=(Math.min(i,3)*35)+'ms';io.observe(el)});
+</script>
+</body>
+</html>

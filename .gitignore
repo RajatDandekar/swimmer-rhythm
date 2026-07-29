@@ -1,0 +1,11 @@
+# virtualenvs / caches — 240 MB of installed packages, reproducible from requirements.txt
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# node
+node_modules/
+
+# scratch
+*.tmp
