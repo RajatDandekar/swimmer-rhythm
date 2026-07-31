@@ -167,36 +167,47 @@ def fig_theory():
     Q = [TH.Q_of(b, D) for D in des]; Qm = [TH.Q_of(-b, D) for D in des]
     dc = TH.crossover(b)
 
-    fig, ax = plt.subplots(1, 3, figsize=(6.5, 2.2), gridspec_kw=dict(wspace=0.42))
-    ax[0].plot(des, P, color=CC, lw=2.2, label="$+b$")
-    ax[0].plot(des, Pm, color=CO, lw=1.0, ls="--", label="$-b$")
+    fig, ax = plt.subplots(1, 3, figsize=(7.0, 2.35), gridspec_kw=dict(wspace=0.5))
+    from matplotlib.ticker import FixedLocator, FixedFormatter, NullLocator
+    Lclosed, Lopen = "linger closed ($+b$)", "linger open ($-b$)"
+
+    # (a) pair term -- the two curves coincide
+    ax[0].plot(des, P, color=CC, lw=2.4, label=Lclosed)
+    ax[0].plot(des, Pm, color=CO, lw=1.1, ls="--", label=Lopen)
     ax[0].set_xscale("log"); ax[0].set_xlabel("$De$")
-    ax[0].set_ylabel(r"$\oint g\,s\,dt$")
-    ax[0].set_title("(a) pair term: identical", loc="left", fontsize=8)
-    ax[0].legend(frameon=False, fontsize=7)
+    ax[0].set_ylabel(r"pair term  $\oint g\,s\,dt$", labelpad=2)
+    ax[0].set_title("(a) identical for both rhythms", loc="left", fontsize=8)
+    ax[0].legend(frameon=False, fontsize=6.6, loc="lower center", handlelength=1.6)
 
+    # (b) triple term -- antisymmetric, crosses zero
     ax[1].axhline(0, color="0.6", lw=0.7)
-    ax[1].plot(des, Q, color=CC, lw=1.6, label="$+b$")
-    ax[1].plot(des, Qm, color=CO, lw=1.6, label="$-b$")
+    ax[1].plot(des, Q, color=CC, lw=1.7, label=Lclosed)
+    ax[1].plot(des, Qm, color=CO, lw=1.7, label=Lopen)
     if dc:
-        ax[1].axvline(dc, color=MAG, lw=0.9, ls=":")
+        ax[1].axvline(dc, color=MAG, lw=1.0, ls=":")
+        ax[1].annotate("crosses 0\nhere", (dc, 0), (dc * 1.25, 0.011), fontsize=6.4,
+                       color=MAG, ha="left", va="center",
+                       arrowprops=dict(arrowstyle="-", color=MAG, lw=0.6))
     ax[1].set_xscale("log"); ax[1].set_xlabel("$De$")
-    ax[1].set_ylabel(r"$\oint g^2 s\,dt$")
-    ax[1].set_title("(b) triple term: crosses 0", loc="left", fontsize=8)
+    ax[1].set_ylabel(r"triple term  $\oint g^{2} s\,dt$", labelpad=2)
+    ax[1].set_title("(b) flips sign between rhythms", loc="left", fontsize=8)
+    ax[1].legend(frameon=False, fontsize=6.6, loc="lower left", handlelength=1.6)
 
-    # collapse
-    COLL = {"baseline": (CC, [(0.15, 0.9005), (0.25, 0.883), (0.40, 0.841), (0.50, 0.808),
-                              (0.65, 0.746), (0.80, 0.684), (0.88, 0.6515)]),
-            "$A=0.28$": (CO, [(0.30, 0.7994), (0.60, 0.7001), (0.80, 0.6191)]),
-            "$\\ell=0.8$": ("#2a8", [(0.30, 1.0956), (0.60, 0.9803), (0.80, 0.8842)])}
+    # (c) collapse -- descriptive legend labels
+    COLL = {"baseline swimmer": (CC, [(0.15, 0.9005), (0.25, 0.883), (0.40, 0.841),
+                                      (0.50, 0.808), (0.65, 0.746), (0.80, 0.684),
+                                      (0.88, 0.6515)]),
+            "smaller stroke": (CO, [(0.30, 0.7994), (0.60, 0.7001), (0.80, 0.6191)]),
+            "looser confinement": ("#1a8f7a", [(0.30, 1.0956), (0.60, 0.9803),
+                                               (0.80, 0.8842)])}
     for name, (c, pts) in COLL.items():
         bb = np.array([p[0] for p in pts]); dd = np.array([p[1] for p in pts])
-        ax[2].plot(bb, dd * (1 + bb ** 2 / 2), "o-", color=c, ms=3, lw=1.2, label=name)
+        ax[2].plot(bb, dd * (1 + bb ** 2 / 2), "o-", color=c, ms=3.2, lw=1.3, label=name)
     ax[2].set_xlabel(r"rhythm strength $b$")
-    ax[2].set_ylabel(r"$De_c\,\langle\dot\theta^2\rangle$")
-    ax[2].set_title(r"(c) collapse (within family)", loc="left", fontsize=8)
-    ax[2].legend(frameon=False, fontsize=6.5)
-    ax[2].set_ylim(0.55, 1.25)
+    ax[2].set_ylabel(r"$De_c\,\langle\dot\theta^{2}\rangle$  (collapsed)", labelpad=2)
+    ax[2].set_title(r"(c) one group collapses it", loc="left", fontsize=8)
+    ax[2].legend(frameon=False, fontsize=6.4, loc="center right")
+    ax[2].set_ylim(0.55, 1.28)
     save(fig, "fig4_theory")
 
 
