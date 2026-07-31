@@ -46,7 +46,9 @@ dawdle in the open configuration, above it in the closed one; and (iii) a stroke
 low-memory fluid is \emph{worse than the plain sinusoid} in a high-memory fluid ($0.914\times$).
 A reduced-order analysis shows the reversal is the sign change of a three-wave (triple-product)
 correlation: the leading pair correlation is provably identical for time-reversed rhythms and
-cannot produce it. Finally, a reinforcement-learning agent trained only on displacement
+cannot produce it. Resolving the field directly, the critical point is set by the balance of
+time-shifted stored-stress contributions --- one rhythm builds its advantage early in the stroke,
+the other late, and the fluid's memory decides which survives to propel; they cancel at $\Dec$. Finally, a reinforcement-learning agent trained only on displacement
 rediscovers the reversal from reward alone --- but only when constrained to a fixed energy
 budget, since an unconstrained agent games the actuation amplitude. The effect is reached three
 independent ways (search, theory, learning), which agree on both the result and its limits.
@@ -194,6 +196,54 @@ the two rhythms (curves coincide). (b) The triple term is exactly antisymmetric 
 $\Dec\langle\dot\theta^2\rangle$ across swimmer geometry and confinement; this collapse does
 \emph{not} extend to other modulation shapes (\S\ref{sec:disc}).}
 \label{fig:theory}
+\end{figure}
+
+\subsection{What sets the critical Deborah number}\label{sec:dec}
+The triple-term argument shows a reversal \emph{must} occur and predicts a crossover, but the
+leading-order value ($\De\!\approx\!0.61$ for $b=0.5$) undershoots the full result ($0.81$) by
+$\sim\!25\%$: truncating the mobility expansion and discarding the near-field stress structure
+loses the precise location. We therefore measure the controlling physics directly from the
+solver.
+
+The polymer velocity lags the shape by an angle $\phi(\De)$ that decreases from $83^\circ$ to
+$56^\circ$ across the range (Fig.~\ref{fig:lag}a), reflecting the growing elastic (in-phase)
+component of the stored stress. Crucially the two rhythms lag \emph{differently}: the
+linger-closed rhythm lags consistently more than linger-open, and the gap widens monotonically
+from $3.6^\circ$ to $11.5^\circ$ as $\De$ increases. In the plane of polymer velocity against
+shape each rhythm traces a distinct hysteresis loop (Fig.~\ref{fig:lag}c); the enclosed area is
+the net propulsion, and which loop encloses more area flips at $\Dec$ (Fig.~\ref{fig:lag}b).
+
+The spatial origin is in Fig.~\ref{fig:movie}: the stored-stress \emph{difference} between the
+two rhythms, followed through one cycle at $\De\!\approx\!\Dec$. It oscillates in sign --- the
+linger-closed rhythm leaves excess stress during the opening phase ($\theta\lesssim0.5\pi$,
+warm), the linger-open rhythm during the closing phase ($\theta\gtrsim0.7\pi$, cool). The net
+drift difference is the cycle integral of this field. \emph{At $\Dec$ the two contributions
+cancel}; below it the closing-phase (open) contribution dominates and open wins, above it the
+opening-phase (closed) contribution dominates and closed wins. The finite relaxation time sets
+\emph{when} each rhythm's stored stress is still present to couple to the mobility, and therefore
+sets the balance --- so $\Dec$ is where the time-shifted stress contributions of the two rhythms
+integrate to equality. This is a definite, measurable condition; but it involves the full spatial
+stress field, which is why the leading-order scalar theory locates it only approximately and the
+computation is required for the precise value.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figs/fig6_lag.pdf}
+\caption{The controlling physics. (a) Phase lag of the polymer velocity behind the shape versus
+$\De$ (linger-closed rhythm shown); the black marker is the crossover. (b) The drift ratio
+crossing unity at $\Dec=0.809$. (c) Polymer velocity against shape at $\De\!\approx\!\Dec$: the
+two rhythms enclose different hysteresis areas, and which is larger flips at $\Dec$.}
+\label{fig:lag}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figs/fig7_movie.pdf}
+\caption{Stored-stress difference between the two rhythms through one cycle at
+$\De\!\approx\!\Dec$ (warm: linger-closed stores more; cool: linger-open stores more). The sign
+oscillates within the cycle; at $\Dec$ its integral vanishes, which is the reversal. Beads: small
+(magenta), large (orange).}
+\label{fig:movie}
 \end{figure}
 
 \subsection{Discovered by reinforcement learning}

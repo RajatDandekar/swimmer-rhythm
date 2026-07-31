@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.29)  31 JUL 2026 16:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.29)  31 JUL 2026 16:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -716,73 +716,85 @@ LaTeX Font Info:    Font shape `T1/ntxtt/m/it' in size <10> not available
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 10.0pt on input line 34.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 14.4pt on input line 55.
+(Font)              scaled to size 14.4pt on input line 57.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 14.4pt on input line 55.
+(Font)              scaled to size 14.4pt on input line 57.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 10.95pt on input line 64.
-LaTeX Font Info:    Trying to load font information for T1+qhv on input line 81
+(Font)              scaled to size 10.95pt on input line 66.
+LaTeX Font Info:    Trying to load font information for T1+qhv on input line 83
 .
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/tex-gyre/t1qhv.fd
 File: t1qhv.fd 2009/09/25 v1.2 font definition file for T1/qhv
 )
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 10.29301pt on input line 81.
+(Font)              scaled to size 10.29301pt on input line 83.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 7.52002pt on input line 81.
+(Font)              scaled to size 7.52002pt on input line 83.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 5.73401pt on input line 81.
+(Font)              scaled to size 5.73401pt on input line 83.
  [1
 
 {/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.95pt on input line 101.
+(Font)              scaled to size 10.95pt on input line 103.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 12.0pt on input line 116.
-<figs/fig1_reversal.pdf, id=75, 408.86188pt x 195.54454pt>
+(Font)              scaled to size 12.0pt on input line 118.
+<figs/fig1_reversal.pdf, id=76, 408.86188pt x 195.54454pt>
 File: figs/fig1_reversal.pdf Graphic file (type pdf)
 <use figs/fig1_reversal.pdf>
-Package pdftex.def Info: figs/fig1_reversal.pdf  used on input line 132.
+Package pdftex.def Info: figs/fig1_reversal.pdf  used on input line 134.
 (pdftex.def)             Requested size: 472.31595pt x 225.90088pt.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 9.40002pt on input line 136.
+(Font)              scaled to size 9.40002pt on input line 138.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 6.86201pt on input line 136.
+(Font)              scaled to size 6.86201pt on input line 138.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 5.17001pt on input line 136.
-<figs/fig2_transfer.pdf, id=79, 301.50702pt x 191.37709pt>
+(Font)              scaled to size 5.17001pt on input line 138.
+<figs/fig2_transfer.pdf, id=80, 301.50702pt x 191.37709pt>
 File: figs/fig2_transfer.pdf Graphic file (type pdf)
 <use figs/fig2_transfer.pdf>
-Package pdftex.def Info: figs/fig2_transfer.pdf  used on input line 151.
+Package pdftex.def Info: figs/fig2_transfer.pdf  used on input line 153.
 (pdftex.def)             Requested size: 292.83357pt x 185.875pt.
-<figs/fig3_mechanism.pdf, id=82, 489.64694pt x 290.42316pt>
+<figs/fig3_mechanism.pdf, id=83, 489.64694pt x 290.42316pt>
 File: figs/fig3_mechanism.pdf Graphic file (type pdf)
 <use figs/fig3_mechanism.pdf>
-Package pdftex.def Info: figs/fig3_mechanism.pdf  used on input line 167.
+Package pdftex.def Info: figs/fig3_mechanism.pdf  used on input line 169.
 (pdftex.def)             Requested size: 472.31595pt x 280.15466pt.
  [2]
-<figs/fig4_theory.pdf, id=96, 437.86086pt x 175.68646pt>
+<figs/fig4_theory.pdf, id=100, 437.86086pt x 175.68646pt>
 File: figs/fig4_theory.pdf Graphic file (type pdf)
 <use figs/fig4_theory.pdf>
-Package pdftex.def Info: figs/fig4_theory.pdf  used on input line 190.
+Package pdftex.def Info: figs/fig4_theory.pdf  used on input line 192.
 (pdftex.def)             Requested size: 472.31595pt x 189.51604pt.
-<figs/fig5_rl.pdf, id=101, 412.97687pt x 192.76215pt>
+<figs/fig6_lag.pdf, id=107, 414.91847pt x 188.06763pt>
+File: figs/fig6_lag.pdf Graphic file (type pdf)
+<use figs/fig6_lag.pdf>
+Package pdftex.def Info: figs/fig6_lag.pdf  used on input line 231.
+(pdftex.def)             Requested size: 472.31595pt x 214.08937pt.
+ [3 <./figs/fig1_reversal.pdf>]
+<figs/fig7_movie.pdf, id=200, 378.51413pt x 93.89227pt>
+File: figs/fig7_movie.pdf Graphic file (type pdf)
+<use figs/fig7_movie.pdf>
+Package pdftex.def Info: figs/fig7_movie.pdf  used on input line 241.
+(pdftex.def)             Requested size: 472.31595pt x 117.16302pt.
+<figs/fig5_rl.pdf, id=203, 412.97687pt x 192.76215pt>
 File: figs/fig5_rl.pdf Graphic file (type pdf)
 <use figs/fig5_rl.pdf>
-Package pdftex.def Info: figs/fig5_rl.pdf  used on input line 218.
+Package pdftex.def Info: figs/fig5_rl.pdf  used on input line 268.
 (pdftex.def)             Requested size: 472.31595pt x 220.46292pt.
- [3 <./figs/fig1_reversal.pdf>] [4 <./figs/fig2_transfer.pdf>] [5 <./figs/fig3_
-mechanism.pdf> <./figs/fig4_theory.pdf>] [6 <./figs/fig5_rl.pdf>] (./paper.aux)
+ [4 <./figs/fig2_transfer.pdf>] [5 <./figs/fig3_mechanism.pdf>]
+[6 <./figs/fig4_theory.pdf> <./figs/fig6_lag.pdf> <./figs/fig7_movie.pdf>]
+[7 <./figs/fig5_rl.pdf>] (./paper.aux)
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 0DEC6292D4D99702771D9F097C6315A9;1277.
+(rerunfilecheck)             Checksum: F831677CE0FD5DD741CE768000F233F8;1534.
  ) 
 Here is how much of TeX's memory you used:
- 15979 strings out of 478268
- 242619 string characters out of 5846347
- 531322 words of memory out of 5000000
- 33871 multiletter control sequences out of 15000+600000
- 588056 words of font info for 175 fonts, out of 8000000 for 9000
+ 16003 strings out of 478268
+ 243078 string characters out of 5846347
+ 531062 words of memory out of 5000000
+ 33887 multiletter control sequences out of 15000+600000
+ 588498 words of font info for 177 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  69i,7n,117p,605b,456s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc}{/usr/l
@@ -794,14 +806,15 @@ f-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2022/texmf-dis
 t/fonts/type1/public/tex-gyre/qhvr.pfb></usr/local/texlive/2022/texmf-dist/font
 s/type1/public/txfonts/t1xtt.pfb></usr/local/texlive/2022/texmf-dist/fonts/type
 1/public/newtx/txexs.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public
-/newtx/txmiaX.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/
-txsys.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmb.pfb
-></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/lo
-cal/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on paper.pdf (6 pages, 370684 bytes).
+/newtx/txmiaX.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfont
+s/txsya.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txsys.
+pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr
+/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/te
+xlive/2022/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
+Output written on paper.pdf (7 pages, 448769 bytes).
 PDF statistics:
- 606 PDF objects out of 1000 (max. 8388607)
- 257 compressed objects within 3 object streams
- 28 named destinations out of 1000 (max. 500000)
- 90 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 767 PDF objects out of 1000 (max. 8388607)
+ 314 compressed objects within 4 object streams
+ 32 named destinations out of 1000 (max. 500000)
+ 108 words of extra memory for PDF output out of 10000 (max. 10000000)
 

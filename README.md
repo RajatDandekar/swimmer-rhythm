@@ -54,6 +54,15 @@ turns an unlearnable problem learnable.
 The algebra also explains a loose end: an early 0-D toy model stubbornly refused to produce a
 reversal. It only ever had the pair term.
 
+**What sets the critical point.** The reduced theory locates the crossover only approximately
+(De ≈ 0.61 vs the full 0.81) because it discards the near-field stress structure. Resolving the
+field directly (`mechanism_deep_modal.py`) shows the mechanism: the stored-stress *difference*
+between the two rhythms oscillates in sign through the cycle — the linger-closed rhythm builds
+excess stress during the opening phase, linger-open during the closing phase. The finite
+relaxation time decides how much of each survives to propel; at De_c the two integrate to
+equality. A definite physical balance that lives in the full field — which is why the scalar
+theory can only approximate it.
+
 ## What is *not* claimed
 
 The reparametrisation framing is **not ours**. Fu, Wolgemuth & Powers (*Phys. Fluids* **21**,
