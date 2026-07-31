@@ -316,6 +316,8 @@ if __name__ == "__main__":
 # is defined. b1>0 lingers closed, b1<0 lingers open. The learned b1 must flip sign at De_c.
 
 DES_CTRL = [0.3, 0.5, 0.65, 0.81, 1.0, 1.3, 2.0]
+DES_FINE = [0.84, 0.88, 0.90, 0.92, 0.96]     # resolve where the learned strategy actually flips
+DES_ALL = sorted(set(DES_CTRL + DES_FINE))
 
 
 def reward_b1(b1, lam):
@@ -378,10 +380,19 @@ def controlled():
 
 
 @app.local_entrypoint()
+def controlled_fine():
+    calls = [(De, train_b1.spawn(De)) for De in DES_FINE]
+    print("spawned FINE-GRID controlled agents around the crossover:")
+    for De, c in calls:
+        print(f"  De={De:<5} {c.object_id}")
+    print("read:  modal run rl_modal.py::ctrl_status")
+
+
+@app.local_entrypoint()
 def ctrl_status():
     out = {}
     print(f"{'De':>6} {'status':>9} {'learned b1':>11} {'gain':>7} {'strategy':>15}")
-    for De in DES_CTRL:
+    for De in DES_ALL:
         try:
             s = STATE[f"ctrl De={De}"]
         except KeyError:
@@ -394,7 +405,7 @@ def ctrl_status():
         out[str(De)] = dict(lam=De, best=b, history=s.get("history", []), status=s["status"])
     json.dump(out, open("rl_ctrl_results.json", "w"), indent=1)
     done = [o for o in out.values() if o["status"] == "done"]
-    if len(done) == len(DES_CTRL):
+    if len(done) == len(DES_ALL):
         bs = [(o["lam"], o["best"]["b1"]) for o in sorted(out.values(), key=lambda z: z["lam"])]
         neg = [De for De, b in bs if b < 0]; pos = [De for De, b in bs if b > 0]
         if neg and pos and max(neg) < min(pos):

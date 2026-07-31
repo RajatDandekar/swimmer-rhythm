@@ -68,10 +68,12 @@ def main():
     pts = " ".join(f"{X(D):.1f},{Yc(g):.1f}" for D, g in zip(des, gains))
     b.append(f'<polyline points="{pts}" fill="none" stroke="{GREEN}" stroke-width="2.2" '
              f'opacity="0.55"/>')
+    TICKS = [0.3, 0.5, 0.8, 1.0, 2.0]
     for D, g, cl in zip(des, gains, strat):
         c = GOLD if cl else BLUE
-        b.append(f'<circle cx="{X(D):.1f}" cy="{Yc(g):.1f}" r="5.6" fill="{c}" '
-                 f'stroke="#fff" stroke-width="1.8"/>')
+        b.append(f'<circle cx="{X(D):.1f}" cy="{Yc(g):.1f}" r="5.0" fill="{c}" '
+                 f'stroke="#fff" stroke-width="1.6"/>')
+    for D in TICKS:
         b.append(txt(X(D), mt + ph + 20, f"{D:g}", 10, MUTED, "middle", family=MONO))
     b.append(txt(x0, mt - 34, "[A]  what the agent learned, at each fluid", 13.5, INK,
                 "start", "600"))
