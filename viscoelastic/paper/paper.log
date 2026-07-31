@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.29)  31 JUL 2026 17:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.29)  31 JUL 2026 17:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -816,10 +816,10 @@ s/txsya.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txsys.
 pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr
 /local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/te
 xlive/2022/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on paper.pdf (7 pages, 470400 bytes).
+Output written on paper.pdf (7 pages, 471246 bytes).
 PDF statistics:
- 830 PDF objects out of 1000 (max. 8388607)
- 329 compressed objects within 4 object streams
+ 835 PDF objects out of 1000 (max. 8388607)
+ 333 compressed objects within 4 object streams
  33 named destinations out of 1000 (max. 500000)
  113 words of extra memory for PDF output out of 10000 (max. 10000000)
 

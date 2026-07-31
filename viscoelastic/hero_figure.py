@@ -66,19 +66,22 @@ def main():
     a.axhline(0, color="0.55", lw=0.8)
     sgn = sg / np.max(np.abs(sg))
     tgn = tg / np.max(np.abs(tg))
-    a.plot(sde, sgn, "-", color=KSEARCH, lw=1.7, zorder=4, label="search (PDE)")
+    a.plot(sde, sgn, "-", color=KSEARCH, lw=1.7, zorder=4, label="search")
     a.plot(sde, sgn, "o", color=KSEARCH, ms=3, zorder=5)
-    a.plot(tde, tgn, "--", color=KTHEORY, lw=1.7, zorder=4, label="theory (algebra)")
+    a.plot(tde, tgn, "--", color=KTHEORY, lw=1.7, zorder=4, label="theory")
     # RL strategy strip
     ys = -1.27
     for D, b in zip(rde, rb):
         a.plot(D, ys, "s", ms=5, color=(CC if b > 0 else CO), mec="w", mew=0.5, zorder=6)
-    a.text(0.5, ys+0.17, "learning agent", fontsize=6.6, va="bottom", ha="center", color="0.4")
+    a.text(0.205, ys + 0.14, "learning agent's choice", fontsize=6.2, va="bottom",
+           ha="left", color="0.45")
     # crossover ticks
-    for Dc, c, lab in ((Dcs, KSEARCH, "0.81"), (Dct, KTHEORY, "0.61"), (Dcr, KRL, "0.86")):
-        a.plot([Dc, Dc], [-0.05, 0.05], color=c, lw=1.4, zorder=7)
-        a.annotate(lab, (Dc, 0), (Dc*0.93 if c==KSEARCH else Dc, 0.55 if c == KSEARCH else (-0.62 if c == KTHEORY else 0.92)),
-                   fontsize=6.8, color=c, ha="center",
+    for Dc, c, lab, dy, dx in ((Dct, KTHEORY, "0.61", -0.72, 1.00),
+                               (Dcs, KSEARCH, "0.81", -0.44, 0.92),
+                               (Dcr, KRL, "0.86", -0.18, 1.07)):
+        a.plot([Dc, Dc], [-0.05, 0.05], color=c, lw=1.5, zorder=7)
+        a.annotate(r"$De_c\!=\!$" + lab, (Dc, 0), (Dc * dx, dy), fontsize=6.6, color=c,
+                   ha="center", va="center",
                    arrowprops=dict(arrowstyle="-", color=c, lw=0.6))
     a.set_xscale("log"); a.set_xlim(0.2, 3); a.set_ylim(-1.42, 1.15)
     a.set_xlabel(r"Deborah number $De$")
@@ -89,7 +92,15 @@ def main():
     a.xaxis.set_major_formatter(FixedFormatter(["0.2", "0.5", "1", "2"]))
     a.xaxis.set_minor_locator(NullLocator())
     a.text(0.735, 1.02, "reversal", fontsize=6.8, color=BAND, ha="center")
-    a.legend(frameon=False, fontsize=7, loc="upper left", handlelength=1.6, borderaxespad=0.6)
+    from matplotlib.lines import Line2D
+    handles = [Line2D([], [], color=KSEARCH, lw=1.7, label="search"),
+               Line2D([], [], color=KTHEORY, lw=1.7, ls="--", label="theory"),
+               Line2D([], [], color=CO, marker="s", ls="none", ms=5, mec="w", mew=0.4,
+                      label="agent: open"),
+               Line2D([], [], color=CC, marker="s", ls="none", ms=5, mec="w", mew=0.4,
+                      label="agent: closed")]
+    a.legend(handles=handles, frameon=False, fontsize=6.4, loc="upper left",
+             handlelength=1.4, borderaxespad=0.5, labelspacing=0.32)
 
     # ---------- (b) collapse: rescale De by each crossover ----------
     b = ax[1]
