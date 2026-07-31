@@ -36,17 +36,23 @@ highly optimised for the wrong fluid is an active handicap, not merely suboptima
 Because the Deborah number is not locally observable to the swimmer, this is a genuine adaptive
 control problem rather than a one-shot optimisation.
 
-## Verified two ways
+## Verified three independent ways
 
 | | |
 |---|---|
 | **Numerically** | 2-D spectral Stokes/Brinkman + Oldroyd-B with immersed asymmetric beads. ~1,000 PDE solves across refinement ladders, parameter sweeps, and out-of-sample tests. |
 | **Analytically** | Fourier algebra, no solver. The cycle integral splits into a *pair* term and a *triple* term. Since `Jₖ(−b) = (−1)ᵏ Jₖ(b)`, flipping the rhythm leaves every `\|ĝₙ\|` unchanged — so the pair term is **provably identical** for both rhythms and cannot reverse anything. The triple term flips sign exactly. **The reversal is a three-wave correlation changing sign.** |
+| **By reinforcement learning** | A 65-parameter numpy policy (REINFORCE, no torch) given only a scalar reward and no equations learns the rhythm; trained separately at each fluid it learns **opposite strategies**, flipping at the same crossover. Two acts: a *naive* "go far" reward makes the agent game effort and linger closed everywhere (the amplitude trap); only an *energy-budgeted* reward recovers the reversal. |
 
-Both routes agree on the mechanism — and both agree on its limits.
+All three routes agree on the mechanism — and all agree on its limits.
 
-This also explains a loose end: an early 0-D toy model stubbornly refused to produce a reversal.
-It only ever had the pair term.
+The RL result closes the loop the project opened with: in a Newtonian fluid this MDP is
+**degenerate** (the scallop theorem leaves no hidden state, so every policy scores zero and there
+is nothing to learn). Fluid memory is precisely what makes it a real learning problem — memory
+turns an unlearnable problem learnable.
+
+The algebra also explains a loose end: an early 0-D toy model stubbornly refused to produce a
+reversal. It only ever had the pair term.
 
 ## What is *not* claimed
 
@@ -77,6 +83,8 @@ python3 rhythm_modal.py           # same path, different rhythm — the 31.5%
 python3 crossover_modal.py        # locate the reversal, with cycle convergence
 python3 constraint_modal.py       # matched-energy search across five fluids
 python3 winners_verify_modal.py   # refine every headline number
+python3 rl_modal.py               # LOCAL: validate the RL env against the crossover data
+modal run --detach rl_modal.py::controlled   # the agent learns the reversal from reward
 ```
 
 The solver (`viscoelastic/solver2.py`, ~160 lines) needs **only numpy**. No commercial CFD
@@ -114,6 +122,7 @@ viscoelastic/
   scaling_modal.py         the scaling law across swimmer/fluid parameters
   theory_modal.py          shape-independence test — this is what broke the general claim
   mechanism_modal.py       fields and cycle-resolved displacement for the JFM figure
+  rl_modal.py              reinforcement learning — the agent that discovers the reversal
   RHYTHM.md                full write-up, including all three retractions
   VALIDATED.md             solver validation and the Brinkman fix
   site/                    the published write-up
