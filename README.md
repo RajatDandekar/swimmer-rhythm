@@ -101,6 +101,20 @@ package is used anywhere. The `*_modal.py` scripts fan sweeps across cloud CPUs 
 [Modal](https://modal.com) purely for wall-clock; each runs locally if you replace `.map()`
 with a loop.
 
+## Independent reproduction in Julia
+
+The whole solver is re-implemented from scratch in **Julia** (only FFTW) in [`julia/`](julia/), as
+a cross-language, cross-FFT-library check. It reproduces the reversal — **De_c ≈ 0.809** vs the
+NumPy value 0.81 — and matches the NumPy net displacements to **8 significant figures** (max
+relative difference `1.3e-8` over all 18 Deborah/rhythm points), with the scallop theorem holding
+to `∮U_stokes ≈ 1.7e-16`. See [`julia/README.md`](julia/README.md) and `julia/julia_reversal.png`.
+
+```bash
+cd julia
+julia --startup-file=no --project=. -e 'using Pkg; Pkg.instantiate()'
+julia --startup-file=no --project=. -t auto reversal.jl      # -> De_c and the NumPy comparison
+```
+
 ## Exact tests the solver passes
 
 | test | result |
