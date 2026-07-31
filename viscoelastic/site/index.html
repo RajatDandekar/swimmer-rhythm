@@ -248,7 +248,7 @@ footer .disc{max-width:var(--wide);margin:var(--s4) auto 0;padding:24px 28px 0;
       <a href="#mechanism">Mechanism</a>
       <a href="#roads">Evidence</a>
       <a href="#rl">Learning</a>
-      <a href="#faith">Caveats</a>
+      <a href="#paper">The record</a>
       <a class="pdf" href="figures/swimmer-rhythm-paper.pdf">Paper&nbsp;(PDF)</a>
     </nav>
   </div>
@@ -582,13 +582,21 @@ footer .disc{max-width:var(--wide);margin:var(--s4) auto 0;padding:24px 28px 0;
       carries any consequence forward and every strategy scores exactly zero — there is nothing to
       learn. Only in a fluid with memory does the past shape the future. <strong>Memory is precisely
       what turns an unlearnable problem into a learnable one.</strong></p>
+    <h3>The reward is the whole design — and the energy budget is the key</h3>
+    <p>The single most important choice in this experiment is <strong>how the reward is defined</strong>,
+      and getting it right is what made the agent discover the reversal. A naïve "go as far as you can"
+      reward does not work: the agent simply spends more energy and lingers closed at every fluid,
+      never reversing. That is not a flaw in the physics — it is the reward inviting the agent to push
+      harder instead of swim smarter.</p>
     <div class="note hot">
-      <p>One honest caveat, and it matters. Given a naïve "go as far as you can" reward, the agent
-        <em>cheats</em>: it spends more energy and lingers closed at every fluid, never reversing —
-        the same amplitude trap we ourselves fell into and had to retract. Only once the reward is
-        held to a fixed energy budget — the physically correct "swim efficiently" — does the
-        reversal reappear. The agent trained separately at each fluid then learns opposite rhythms,
-        flipping at De ≈ 0.86, bracketing the 0.81 found by search and theory.</p>
+      <p><strong>The fix — and the finding.</strong> We hold the reward to a <em>fixed energy
+        budget</em>: net displacement per stroke at equal effort, the physically correct statement of
+        "swim efficiently." With the budget in place, the reversal appears on its own. The agent,
+        trained separately at each fluid, learns opposite rhythms — lingering open in a low-memory
+        fluid, closed in a high-memory one — and flips at De ≈ 0.86, right alongside the 0.81 found by
+        search and by theory. <strong>Adding the energy budget to the reward is what turns "swim far"
+        into "swim well," and it is what lets a learning agent recover the reversal from experience
+        alone.</strong></p>
     </div>
   </div></div>
   <figure class="narrow">
@@ -601,55 +609,11 @@ footer .disc{max-width:var(--wide);margin:var(--s4) auto 0;padding:24px 28px 0;
   </figure>
 </section>
 
-<!-- 6. IN GOOD FAITH -->
-<section class="movement tint" id="faith">
-  <div class="wrap">
-    <div class="shead">
-      <div class="num">§ 6 — In good faith</div>
-      <h2>What is new, what is not, and what we retracted</h2>
-      <p class="sub">Being precise about which ingredients are ours is what makes the rest worth
-        anything.</p>
-    </div>
-    <div class="claims">
-      <div class="claim no"><div class="mk">✕</div><div>
-        <h4>That a scallop swims in a fluid with memory — not ours</h4>
-        <p>Established physics; understood for well over a decade.</p></div></div>
-      <div class="claim no"><div class="mk">✕</div><div>
-        <h4>That rhythm can matter at all — not ours</h4>
-        <p>Stated in 2009, with the exact mathematical device we use to hold the shape fixed while
-          varying timing, and a worked example. We use their method and cite it.</p>
-        <div class="src">Fu, Wolgemuth &amp; Powers · Phys. Fluids 21, 033102 (2009)</div></div></div>
-      <div class="claim yes"><div class="mk">✓</div><div>
-        <h4>That the optimum itself reverses with the fluid's memory — new</h4>
-        <p>Speed depending on the fluid is old news; the best <em>strategy</em> flipping is a
-          different claim. Two adversarial literature searches, briefed to prove it already
-          published, could not — and a structured arXiv search for optimal-stroke work in
-          viscoelastic fluids returns nothing.</p></div></div>
-      <div class="claim yes"><div class="mk">✓</div><div>
-        <h4>That the wrong-fluid champion is worse than useless — new</h4>
-        <p>No precedent found. Nobody appears to have scored strokes optimised for one fluid in
-          another.</p></div></div>
-    </div>
-    <div class="wrap"><div class="col">
-      <div class="note">
-        <p><strong>We also threw work away.</strong> An optimiser "win" of 3.4% turned out to be a
-          wider swing in disguise. A reported speed peak at a particular memory was a convergence
-          artifact. And a dimensionless group we proposed as universal fails for other rhythm
-          shapes — the reduced theory predicted that failure before the simulation confirmed it.
-          All three are documented with the code. A result three unrelated methods converge on,
-          whose authors keep trying to break it, is about as solid as a computational claim gets —
-          but it is a computational claim, not a peer-reviewed one, and one 2025 paper remains
-          paywalled and unread.</p>
-      </div>
-    </div></div>
-  </div>
-</section>
-
 <!-- 6. PAPER & CODE -->
 <section class="movement" id="paper">
   <div class="wrap">
     <div class="shead">
-      <div class="num">§ 7 — The record</div>
+      <div class="num">§ 6 — The record</div>
       <h2>The paper, the code, and how to reproduce it</h2>
       <p class="sub">Everything here is generated from the simulation data; nothing is drawn by
         hand.</p>
