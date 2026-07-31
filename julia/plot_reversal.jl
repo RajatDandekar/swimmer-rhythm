@@ -2,14 +2,24 @@
 using JSON, Plots
 gr()
 
-d   = JSON.parsefile(joinpath(@__DIR__, "julia_crossover.json"))
+# prefer the dense sweep for a smooth curve; fall back to the 9-point crossover file
+densef = joinpath(@__DIR__, "julia_dense.json")
+d   = JSON.parsefile(isfile(densef) ? densef : joinpath(@__DIR__, "julia_crossover.json"))
 res = d["results"]
-Dec = d["De_c"]
 DES = sort(unique(Float64(r["lam"]) for r in res))
 pick(De, b1) = only(filter(x -> isapprox(x["lam"], De) && x["b1"] == b1, res))["dx"]
 op  = [abs(pick(De, -0.5)) for De in DES]
 cl  = [abs(pick(De, +0.5)) for De in DES]
 rat = cl ./ op
+# critical Deborah number: where the ratio crosses unity
+Dec = get(d, "De_c", NaN)
+if isnan(Dec)
+    for i in 2:length(DES)
+        if (rat[i-1]-1)*(rat[i]-1) <= 0
+            global Dec = DES[i-1] + (1-rat[i-1])*(DES[i]-DES[i-1])/(rat[i]-rat[i-1]); break
+        end
+    end
+end
 
 teal = RGB(0.10, 0.44, 0.69); orange = RGB(0.75, 0.37, 0.09)
 ink  = RGB(0.09, 0.075, 0.05); mag = RGB(0.70, 0.0, 0.42)

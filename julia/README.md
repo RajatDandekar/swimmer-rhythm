@@ -22,7 +22,14 @@ all written out explicitly. `ViscoelasticSwimmer.jl` is a faithful, line-by-line
 | `ViscoelasticSwimmer.jl` | the solver: `Swimmer`, `run_cycles!`, `warp_stroke` |
 | `smoke.jl` | correctness checks — the scallop theorem to round-off, and Julia-vs-NumPy displacements |
 | `reversal.jl` | sweeps the Deborah number for both rhythms and locates the crossover `De_c` |
-| `plot_reversal.jl` | draws `julia_reversal.png` from the sweep output |
+| `julia_sweep_modal.py` + `sweep_one.jl` | run all the sweeps in parallel on **Modal** (one container per point) |
+| `sciml_variant.jl` | integrate the same physics with **OrdinaryDiffEq.jl** (`Tsit5`) |
+| `symbolic_regression.jl` | let **SymbolicRegression.jl** discover a closed-form law for the reversal |
+| `amp_scaling.jl` | discovered coefficient: the amplitude exponent (≈ 2) |
+| `collapse.jl` | discovered coefficient: the dimensionless constant `K = De_c·⟨θ̇²⟩` |
+| `plot_reversal.jl`, `plot_sr.jl`, `plot_extras.jl` | the figures |
+
+A companion site presents all of this: **<https://swimmer-rhythm-julia.vercel.app>**.
 
 ## Run it
 
@@ -69,10 +76,25 @@ Sweeping the Deborah number for the two mirror rhythms (`reversal.jl`, N=192, ns
 
 `plot_reversal.jl` draws this as `julia_reversal.png`.
 
+## Going further (the SciML stack)
+
+- **Modal.** `julia_sweep_modal.py` bakes Julia + FFTW into a Modal image and fans every sweep
+  point out in parallel (one container each), so the whole 75-point sweep finishes in minutes.
+- **OrdinaryDiffEq.jl.** `sciml_variant.jl` poses the conformation field + displacement as one
+  `ODEProblem` and integrates it with the adaptive `Tsit5`; it agrees with the hand-written RK2 to
+  `9e-4` and reproduces the reversal (ratio 0.951 → 1.240), showing the effect is a property of the
+  physics, not of the time-stepper.
+- **SymbolicRegression.jl.** `symbolic_regression.jl` discovers a closed form for the speed-ratio
+  curve, `r(De) = 1.247·(De − ln(De+0.673))^{1/4}`, which crosses unity at `De_c ≈ 0.80`.
+- **Discovered coefficients.** `amp_scaling.jl` recovers the amplitude exponent `p = 1.994` (speed
+  ∝ amplitude²); `collapse.jl` finds the dimensionless constant `De_c·⟨θ̇²⟩ = K ≈ 0.909`, flat to
+  `0.5%` across the rhythm family.
+
 ## What "reproduced" means here
 
 Same physics, independent code: the FFT algebra, the analytic Stokes/polymer velocity split, the
 RK2 update and the 2/3 dealiasing are all re-derived in Julia, with FFT conventions matched to
 NumPy (`fft` ≡ `fft2`, `ifft` ≡ `ifft2`). No part of the Python is called.
 
-Project: <https://github.com/RajatDandekar/swimmer-rhythm> · site: <https://swimmer-rhythm.vercel.app>
+Project: <https://github.com/RajatDandekar/swimmer-rhythm> · main site:
+<https://swimmer-rhythm.vercel.app> · Julia site: <https://swimmer-rhythm-julia.vercel.app>

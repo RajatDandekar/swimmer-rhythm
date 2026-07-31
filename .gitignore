@@ -14,3 +14,5 @@ viscoelastic/swim_frames.npz
 julia/smoke_out.txt
 julia/reversal_out.txt
 julia/*_out.txt
+julia/loadtest.txt
+julia/outputs/
