@@ -73,11 +73,8 @@ strong{font-weight:600}
   padding:7px 15px;border-radius:999px}
 .hero .solved .dot{width:8px;height:8px;border-radius:50%;background:#1c7a55;
   box-shadow:0 0 0 4px rgba(28,122,85,.15)}
-.hero h1{font-size:clamp(40px,7vw,80px);line-height:1.02;letter-spacing:-.032em;
-  margin:20px auto 0;max-width:16ch;font-weight:700}
-.hero h1 .rev{color:var(--hot);font-style:italic}
-.hero h1 .rev::after{content:"";display:block;height:.09em;margin-top:.02em;
-  background:linear-gradient(90deg,var(--hot),rgba(179,0,107,.15));border-radius:2px}
+.hero h1{font-size:clamp(38px,6.4vw,72px);line-height:1.05;letter-spacing:-.028em;
+  margin:20px auto 0;max-width:18ch;font-weight:700;color:var(--ink)}
 .hero .dek{font-family:var(--body);font-size:clamp(19px,2.3vw,23px);line-height:1.5;
   color:var(--ink2);max-width:42rem;margin:24px auto 0;font-weight:400}
 .hero .dek strong{color:var(--ink);font-weight:600}
@@ -281,7 +278,7 @@ footer .disc{max-width:var(--wide);margin:var(--s4) auto 0;padding:24px 28px 0;
 <section class="hero">
   <div class="wrap">
     <div class="solved"><span class="dot"></span>An open question since 2012 — now solved</div>
-    <h1>The best way to swim<br><span class="rev">reverses</span> with the fluid.</h1>
+    <h1>The best way to swim reverses with the fluid.</h1>
     <p class="dek">A microswimmer's optimal stroke rhythm was expected to <em>shift</em> as the
       surrounding fluid changed. It does something stronger: it <strong>flips into its exact
       opposite</strong>. The question was posed in 2012 and never run — we ran it, and proved the
@@ -650,14 +647,6 @@ footer .disc{max-width:var(--wide);margin:var(--s4) auto 0;padding:24px 28px 0;
         alone.</strong></p>
     </div>
   </div></div>
-  <figure class="narrow">
-    <div class="frame"><video controls playsinline preload="metadata"
-      poster="figures/swimmer-reversal-poster.png" style="width:100%;display:block">
-      <source src="figures/swimmer-reversal.mp4" type="video/mp4"></video></div>
-    <figcaption><span class="fn">Film.</span> Ninety seconds: the race between the two learned
-      gaits, with the fluid's memory dialled up underneath — the lead changes hands at the critical
-      point.</figcaption>
-  </figure>
 </section>
 
 <!-- 6. PAPER & CODE -->
