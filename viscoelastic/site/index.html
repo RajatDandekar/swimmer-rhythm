@@ -708,9 +708,61 @@ footer{padding:64px 0 84px;border-top:1px solid var(--line);color:var(--muted);f
   </div>
 </section>
 
+<section class="alt">
+  <div class="wrap read">
+    <div class="tag">09 — The third proof</div>
+    <h2>Then we let an agent figure it out</h2>
+    <p class="lede">We found the reversal by searching, and we derived it with algebra. Here's a
+      third, completely different route: give an agent nothing but a reward, and see if it
+      learns the answer on its own.</p>
+    <p>This is the version that matches how you'd actually think about a swimming organism. It
+      has a goal — get somewhere, for the energy it can spend — and no idea how. It tries things,
+      gets a reward (how far it went), and adjusts. That is <strong>reinforcement learning</strong>,
+      and the swimmer is the agent.</p>
+    <p>One thing had to be true first, and it's the reason this whole project began. <strong>In
+      plain water this learning problem is empty.</strong> The scallop theorem means the fluid
+      has no memory of what the swimmer did, so nothing the agent tries carries any consequence
+      forward — every strategy scores exactly zero, and there is nothing to learn. It is only in
+      a fluid <em>with memory</em> that the past affects the future, that actions have delayed
+      consequences, and that there is a real problem to solve. <strong>Memory is what turns an
+      unlearnable problem into a learnable one.</strong></p>
+  </div>
+  <div class="wrap">
+    <figure>
+      <img src="figures/rl.svg" alt="Left: the agent's learned rhythm parameter versus Deborah number, crossing zero at 0.81. Right: learning curves rising above the sinusoid.">
+      <figcaption>An agent — a 65-parameter network, trained from reward with no equations and
+        no supplied answer — learns the rhythm. <strong>Left:</strong> trained separately at each
+        fluid, it beats the plain sinusoid everywhere (the height), and the strategy it chooses
+        (the colour) flips from open to closed at exactly the crossover we found the other two
+        ways. <strong>Right:</strong> a free-form agent climbing above the plain sinusoid as it
+        learns.</figcaption>
+    </figure>
+  </div>
+  <div class="wrap read">
+    <p>The left panel is the payoff: <strong>the agent learned opposite strategies on either
+      side of the crossover</strong> — lingering open below De ≈ 0.81, lingering closed above it
+      — with no knowledge of any of our earlier results. The reversal, rediscovered from reward
+      alone.</p>
+
+    <div class="pull m">
+      <p><strong>But it only worked once we made the reward fair — and that failure is worth as
+        much as the success.</strong> Our first agent was told simply “go as far as you can.” It
+        learned to linger closed at <em>every</em> fluid, no reversal at all — because it quietly
+        cheated, spending twice the energy to muscle through. It had fallen into the exact same
+        amplitude trap we fell into early on and had to retract. Only when we held the agent to a
+        fixed energy budget — the honest version of “get there efficiently” — did the reversal
+        appear. The trap is not a mistake someone makes; it is a property of the problem.</p>
+    </div>
+
+    <p>So the reversal now stands on three independent legs: a search that found it, a
+      pen-and-paper derivation that explained it, and an agent that learned it. They do not share
+      a method, and they agree.</p>
+  </div>
+</section>
+
 <section>
   <div class="wrap read">
-    <div class="tag">09 — Being straight with you</div>
+    <div class="tag">10 — Being straight with you</div>
     <h2>What's new here, and what isn't</h2>
     <p class="lede">Most of the ingredients in this story were already known. Being precise
       about which ones is what makes the remaining piece worth anything.</p>
@@ -753,7 +805,7 @@ footer{padding:64px 0 84px;border-top:1px solid var(--line);color:var(--muted);f
 
 <section class="alt">
   <div class="wrap read">
-    <div class="tag">10 — How hard we tried to break it</div>
+    <div class="tag">11 — How hard we tried to break it</div>
     <h2>Three results died before this one lived</h2>
     <p>Numerical results are easy to fool yourself with, and we did — repeatedly. Every claim
       here survived a deliberate attempt to kill it. Several earlier claims did not, and were
@@ -783,7 +835,7 @@ footer{padding:64px 0 84px;border-top:1px solid var(--line);color:var(--muted);f
 
 <section>
   <div class="wrap read">
-    <div class="tag">11 — Reproduce it</div>
+    <div class="tag">12 — Reproduce it</div>
     <h2>The whole thing is about 300 lines</h2>
     <p>No commercial fluid-dynamics package was used. The simulation is written from scratch in
       Python and NumPy — a spectral solver for the fluid, a standard model for the elastic
