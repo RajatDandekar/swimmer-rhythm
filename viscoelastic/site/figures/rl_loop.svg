@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" width="100%" style="max-width:900px;height:auto"><defs><marker id="ah-1a6fb0" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4 Z" fill="#1a6fb0"/></marker><marker id="ah-d06a1c" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4 Z" fill="#d06a1c"/></marker><marker id="ah-b3006b" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4 Z" fill="#b3006b"/></marker></defs><rect width="900" height="430" rx="14" fill="#ffffff" stroke="#e7e2d5"/><text x="34" y="40" font-size="19" fill="#16130d" font-family="Fraunces,Georgia,serif" font-weight="600">How the agent learns to swim</text><text x="34" y="63" font-size="13" fill="#6d665a" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">a policy trained by REINFORCE — no equations, no target stroke, only a scalar reward</text>
+  <rect x="60" y="150" width="210" height="96" rx="12" fill="#ffffff" stroke="#e7e2d5"/>
+  <rect x="60" y="150" width="5" height="96" rx="2.5" fill="#1a6fb0"/>
+  <text x="165.0" y="177" font-size="15.5" fill="#16130d" text-anchor="middle"
+        font-family="Fraunces,Georgia,serif" font-weight="600">Agent</text>
+  <text x="165.0" y="198" font-size="12" fill="#6d665a" text-anchor="middle"
+        font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">policy network π(a | s)</text>
+  <rect x="345" y="150" width="210" height="96" rx="12" fill="#ffffff" stroke="#e7e2d5"/>
+  <rect x="345" y="150" width="5" height="96" rx="2.5" fill="#d06a1c"/>
+  <text x="450.0" y="177" font-size="15.5" fill="#16130d" text-anchor="middle"
+        font-family="Fraunces,Georgia,serif" font-weight="600">Environment</text>
+  <text x="450.0" y="198" font-size="12" fill="#6d665a" text-anchor="middle"
+        font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">viscoelastic fluid solver</text>
+  <rect x="630" y="150" width="210" height="96" rx="12" fill="#ffffff" stroke="#e7e2d5"/>
+  <rect x="630" y="150" width="5" height="96" rx="2.5" fill="#1c7a55"/>
+  <text x="735.0" y="177" font-size="15.5" fill="#16130d" text-anchor="middle"
+        font-family="Fraunces,Georgia,serif" font-weight="600">Reward</text>
+  <text x="735.0" y="198" font-size="12" fill="#6d665a" text-anchor="middle"
+        font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">how far it swam</text><path d="M 272 198.0 L 343 198.0" fill="none" stroke="#1a6fb0" stroke-width="2" marker-end="url(#ah-1a6fb0)"/>
+  <text x="307.5" y="187.0" font-size="12" fill="#1a6fb0" text-anchor="middle"
+        font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-weight="600">action</text>
+  <text x="307.5" y="209.0" font-size="10" fill="#6d665a" text-anchor="middle"
+        font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace">rhythm ρ(t)</text><path d="M 557 198.0 L 628 198.0" fill="none" stroke="#d06a1c" stroke-width="2" marker-end="url(#ah-d06a1c)"/>
+  <text x="592.5" y="187.0" font-size="12" fill="#d06a1c" text-anchor="middle"
+        font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-weight="600">outcome</text>
+  <text x="592.5" y="209.0" font-size="10" fill="#6d665a" text-anchor="middle"
+        font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace">Δx / stroke</text><path d="M735 246 L735 316 L165 316 L165 246" fill="none" stroke="#b3006b" stroke-width="2" marker-end="url(#ah-b3006b)"/><rect x="360" y="294" width="180" height="44" rx="10" fill="#f6f4ec" stroke="#e7e2d5"/><text x="450" y="313" font-size="13" fill="#b3006b" text-anchor="middle" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-weight="600">policy-gradient update</text><text x="450" y="330" font-size="10.5" fill="#6d665a" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace">nudge π toward higher reward</text><rect x="60" y="362" width="780" height="42" rx="10" fill="#ffffff" stroke="#1c7a55" stroke-opacity="0.5"/><text x="80" y="388" font-size="12.5" fill="#6d665a" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">reward &#160;=&#160;</text><text x="150" y="388" font-size="14" fill="#16130d" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-weight="700">net displacement per stroke</text><text x="440" y="388" font-size="12.5" fill="#6d665a" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">&#160;&#160;at a fixed energy budget &#160;(so it cannot cheat by pushing harder)</text></svg>

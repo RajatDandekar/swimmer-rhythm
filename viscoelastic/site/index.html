@@ -208,6 +208,30 @@ footer .disc{max-width:var(--wide);margin:var(--s4) auto 0;padding:24px 28px 0;
   border-top:1px solid var(--line);font-size:13.5px;color:var(--faint)}
 @media(max-width:720px){footer .grid{grid-template-columns:1fr;gap:26px}}
 
+/* hero caption */
+.herocap{max-width:44rem;margin:16px auto 0;font-family:var(--body);font-size:14px;
+  line-height:1.55;color:var(--muted);text-align:center;font-style:italic}
+
+/* authors */
+.authors{border-top:1px solid var(--line);padding:var(--s6) 0 var(--s5);text-align:center}
+.authors .num{font-family:var(--mono);font-size:13px;color:var(--hot);letter-spacing:.04em}
+.authors h2{font-size:clamp(27px,3.4vw,38px);margin:12px auto 8px}
+.authors .lede{font-family:var(--body);font-size:18px;color:var(--muted);max-width:40rem;
+  margin:0 auto var(--s5);font-style:italic}
+.people{max-width:60rem;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.person{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:30px 24px}
+.person .av{width:52px;height:52px;border-radius:50%;margin:0 auto 16px;
+  display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:600;
+  font-size:22px;color:#fff}
+.person .nm{font-family:var(--disp);font-size:20px;font-weight:600;color:var(--ink)}
+.person .role{font-family:var(--ui);font-size:12.5px;font-weight:600;color:var(--hot);
+  letter-spacing:.02em;margin-top:4px}
+.person .cr{font-family:var(--body);font-size:14.5px;color:var(--muted);margin-top:10px;
+  line-height:1.5}
+.authors .lab{max-width:46rem;margin:var(--s5) auto 0;font-family:var(--body);font-size:15px;
+  line-height:1.6;color:var(--ink2)}
+@media(max-width:760px){.people{grid-template-columns:1fr;gap:16px}}
+
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}
@@ -223,6 +247,7 @@ footer .disc{max-width:var(--wide);margin:var(--s4) auto 0;padding:24px 28px 0;
       <a href="#result">Result</a>
       <a href="#mechanism">Mechanism</a>
       <a href="#roads">Evidence</a>
+      <a href="#rl">Learning</a>
       <a href="#faith">Caveats</a>
       <a class="pdf" href="figures/swimmer-rhythm-paper.pdf">Paper&nbsp;(PDF)</a>
     </nav>
@@ -247,6 +272,9 @@ footer .disc{max-width:var(--wide);margin:var(--s4) auto 0;padding:24px 28px 0;
   </div>
   <div class="heroplate">
     <div class="frame"><img src="figures/hero.png" alt="A microscopic two-bead swimmer suspended in a fluid threaded with stretched polymer filaments"></div>
+    <p class="herocap">The swimmer: two unequal beads on a flexible rod, opening and closing in a
+      fluid whose stretched molecules (gold) hold a fading memory of its motion. An artist's
+      impression; the quantitative figures below are all generated from the simulation.</p>
   </div>
 </section>
 
@@ -279,7 +307,7 @@ footer .disc{max-width:var(--wide);margin:var(--s4) auto 0;padding:24px 28px 0;
 </section>
 
 <!-- 1. THE PARADOX -->
-<section class="movement tint" id="paradox">
+<section class="movement" id="paradox">
   <div class="wrap">
     <div class="shead">
       <div class="num">§ 1 — The paradox</div>
@@ -323,7 +351,7 @@ footer .disc{max-width:var(--wide);margin:var(--s4) auto 0;padding:24px 28px 0;
 </section>
 
 <!-- 2. THE REVERSAL -->
-<section class="movement" id="result">
+<section class="movement tint" id="result">
   <div class="wrap">
     <div class="shead">
       <div class="num">§ 2 — The result</div>
@@ -390,7 +418,7 @@ footer .disc{max-width:var(--wide);margin:var(--s4) auto 0;padding:24px 28px 0;
 </section>
 
 <!-- 3. THE MECHANISM -->
-<section class="movement tint" id="mechanism">
+<section class="movement" id="mechanism">
   <div class="wrap">
     <div class="shead">
       <div class="num">§ 3 — The mechanism</div>
@@ -461,7 +489,7 @@ footer .disc{max-width:var(--wide);margin:var(--s4) auto 0;padding:24px 28px 0;
 </section>
 
 <!-- 4. THREE ROADS -->
-<section class="movement" id="roads">
+<section class="movement tint" id="roads">
   <div class="wrap">
     <div class="shead">
       <div class="num">§ 4 — The evidence</div>
@@ -481,7 +509,7 @@ footer .disc{max-width:var(--wide);margin:var(--s4) auto 0;padding:24px 28px 0;
       <div class="road"><div class="rn">03</div><h3>Learning</h3>
         <p>Give an agent only a reward and no equations. It learns opposite strategies on either
           side of the crossover — the reversal, rediscovered from experience.</p>
-        <p class="rf">→ flips at De ≈ 0.86, bracketing 0.81</p></div>
+        <p class="rf">→ flips at De ≈ 0.86 — see §5</p></div>
     </div>
   </div>
   <figure>
@@ -495,48 +523,89 @@ footer .disc{max-width:var(--wide);margin:var(--s4) auto 0;padding:24px 28px 0;
       crossover sits at unity, marked. They do not agree to three digits (0.81, 0.61, 0.86); they
       share one transition, which is the stronger statement.</figcaption>
   </figure>
-  <div class="wrap"><div class="col">
-    <h3>The learning agent, and why memory matters</h3>
-    <p>The learning route closes the loop the project opened with. In an ordinary fluid this problem
-      is <em>empty</em>: the scallop theorem leaves no trace of the past, so nothing an agent tries
-      carries forward and every strategy scores zero. Only in a fluid with memory does the past
-      shape the future — so memory is what turns an unlearnable problem into a learnable one. Given
-      a fair energy budget, an agent trained separately at each fluid learns opposite rhythms,
-      flipping at the same crossover.</p>
-  </div></div>
-  <figure class="narrow">
-    <div class="frame pad"><img src="figures/fig5_rl.png" alt="Two panels: the strategy an agent learns versus Deborah number, and learning curves rising above the sinusoid"></div>
-    <figcaption><span class="fn">Figure 6.</span> <strong>Discovered from reward alone.</strong>
-      (a) The strategy a 65-parameter agent learns at each fluid; the colour flips from open to
-      closed across the crossover. (b) A free agent climbing above the plain stroke as it learns.
-      A naïve reward makes the agent cheat on energy and never reverse — the fair budget is what
-      recovers it.</figcaption>
-  </figure>
   <figure class="narrow">
     <div class="frame pad"><img src="figures/fig2_transfer.png" alt="A grid of each optimised rhythm scored in five fluids, with the harmful entry highlighted"></div>
-    <figcaption><span class="fn">Figure 7.</span> <strong>Every champion wins its own fluid and
+    <figcaption><span class="fn">Figure 6.</span> <strong>Every champion wins its own fluid and
       loses the others.</strong> Each row is a rhythm optimised for one fluid, scored in five. The
       highlighted entry (0.914) is below one: the low-memory champion is slower than the plain
       stroke in the high-memory fluid.</figcaption>
   </figure>
   <div class="wrap"><div class="col">
-    <p style="margin-bottom:0">Prefer to watch it? A ninety-second film of the race, with the
-      fluid's memory dialled up underneath it, is below.</p>
+    <p style="margin-bottom:0">The third road — <strong>reinforcement learning</strong> — is the
+      one that reads like an organism, and it deserves its own look.</p>
+  </div></div>
+</section>
+
+<!-- 5. REINFORCEMENT LEARNING -->
+<section class="movement" id="rl">
+  <div class="wrap">
+    <div class="shead">
+      <div class="num">§ 5 — Reinforcement learning</div>
+      <h2>An agent discovers the rhythm from reward</h2>
+      <p class="sub">No equations, no target stroke. Just a goal — swim far — and the freedom to
+        try.</p>
+    </div>
+    <div class="col">
+      <p>This is the version that matches how a living swimmer actually faces the problem. It is
+        not handed the answer; it has a body it can move, a single scalar <strong>reward</strong>
+        for how far it got, and nothing else. It tries a rhythm, sees the reward, and adjusts.
+        That is <strong>reinforcement learning</strong> — a policy (a small neural network) trained
+        by policy gradient (REINFORCE). We never tell it what a good stroke looks like.</p>
+    </div>
+  </div>
+  <figure>
+    <div class="frame pad"><img src="figures/rl_loop.svg" alt="The reinforcement-learning loop: the policy proposes a stroke rhythm, the fluid solver runs it and returns a reward, and a policy-gradient update nudges the policy toward higher reward"></div>
+    <figcaption><span class="fn">Figure 7.</span> <strong>The learning loop.</strong> The policy
+      proposes a stroke rhythm; the viscoelastic fluid solver runs it and reports how far the
+      swimmer moved; a policy-gradient update nudges the policy toward higher reward, and the loop
+      repeats. The reward is net displacement per stroke <em>at a fixed energy budget</em> — so the
+      agent cannot cheat by simply pushing harder.</figcaption>
+  </figure>
+  <div class="wrap"><div class="col">
+    <p>From that alone, it learns. The reward climbs off the plain stroke within a handful of
+      updates, and the rhythms it settles on are exactly the open and closed gaits the other two
+      methods identified — discovered here from experience, not derived.</p>
+  </div></div>
+  <figure>
+    <div class="frame pad"><img src="figures/fig_rl_learn.png" alt="Two panels: the reward climbing from the plain stroke as the agent trains at three fluids, and the open and closed gaits the agent settled on"></div>
+    <figcaption><span class="fn">Figure 8.</span> <strong>Learning, and the gaits learned.</strong>
+      (a) The reward relative to the plain stroke, climbing as the agent trains at three different
+      fluids — it starts knowing nothing and improves from reward alone. (b) The gaits it settled
+      on: in a low-memory fluid it learns to dawdle while <span style="color:#1a6fb0">open</span>;
+      in a high-memory fluid, while <span style="color:#d06a1c">closed</span>. Dots are equally
+      spaced in time — where they bunch, the swimmer dawdles.</figcaption>
+  </figure>
+  <div class="wrap"><div class="col">
+    <h3>Why memory is what makes it learnable</h3>
+    <p>The learning route closes the loop this project opened with. In an ordinary fluid the problem
+      is <em>empty</em>: the scallop theorem leaves no trace of the past, so nothing the agent tries
+      carries any consequence forward and every strategy scores exactly zero — there is nothing to
+      learn. Only in a fluid with memory does the past shape the future. <strong>Memory is precisely
+      what turns an unlearnable problem into a learnable one.</strong></p>
+    <div class="note hot">
+      <p>One honest caveat, and it matters. Given a naïve "go as far as you can" reward, the agent
+        <em>cheats</em>: it spends more energy and lingers closed at every fluid, never reversing —
+        the same amplitude trap we ourselves fell into and had to retract. Only once the reward is
+        held to a fixed energy budget — the physically correct "swim efficiently" — does the
+        reversal reappear. The agent trained separately at each fluid then learns opposite rhythms,
+        flipping at De ≈ 0.86, bracketing the 0.81 found by search and theory.</p>
+    </div>
   </div></div>
   <figure class="narrow">
     <div class="frame"><video controls playsinline preload="metadata"
       poster="figures/swimmer-reversal-poster.png" style="width:100%;display:block">
       <source src="figures/swimmer-reversal.mp4" type="video/mp4"></video></div>
-    <figcaption><span class="fn">Film.</span> The race, with the lead changing hands around the
-      critical Deborah number.</figcaption>
+    <figcaption><span class="fn">Film.</span> Ninety seconds: the race between the two learned
+      gaits, with the fluid's memory dialled up underneath — the lead changes hands at the critical
+      point.</figcaption>
   </figure>
 </section>
 
-<!-- 5. IN GOOD FAITH -->
+<!-- 6. IN GOOD FAITH -->
 <section class="movement tint" id="faith">
   <div class="wrap">
     <div class="shead">
-      <div class="num">§ 5 — In good faith</div>
+      <div class="num">§ 6 — In good faith</div>
       <h2>What is new, what is not, and what we retracted</h2>
       <p class="sub">Being precise about which ingredients are ours is what makes the rest worth
         anything.</p>
@@ -580,7 +649,7 @@ footer .disc{max-width:var(--wide);margin:var(--s4) auto 0;padding:24px 28px 0;
 <section class="movement" id="paper">
   <div class="wrap">
     <div class="shead">
-      <div class="num">§ 6 — The record</div>
+      <div class="num">§ 7 — The record</div>
       <h2>The paper, the code, and how to reproduce it</h2>
       <p class="sub">Everything here is generated from the simulation data; nothing is drawn by
         hand.</p>
@@ -611,6 +680,40 @@ python3 rl_modal.py               <span class="c"># the agent that learns it fro
 }</pre>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="authors" id="authors">
+  <div class="wrap">
+    <div class="num">The authors</div>
+    <h2>From the founders of Vizuara</h2>
+    <p class="lede">A research and education lab building AI from first principles.</p>
+    <div class="people">
+      <div class="person">
+        <div class="av" style="background:#155e8c">RD</div>
+        <div class="nm">Dr. Raj Dandekar</div>
+        <div class="role">Co-founder, Vizuara</div>
+        <div class="cr">PhD, Massachusetts Institute of Technology.<br>Scientific machine learning
+          and computational modelling.</div>
+      </div>
+      <div class="person">
+        <div class="av" style="background:#c0641a">RD</div>
+        <div class="nm">Dr. Rajat Dandekar</div>
+        <div class="role">Co-founder, Vizuara</div>
+        <div class="cr">PhD, Purdue University · B.Tech, IIT Madras.<br>Scientific machine learning
+          and physics-based modelling.</div>
+      </div>
+      <div class="person">
+        <div class="av" style="background:#b3006b">SP</div>
+        <div class="nm">Dr. Sreedath Panat</div>
+        <div class="role">Co-founder, Vizuara</div>
+        <div class="cr">PhD, Massachusetts Institute of Technology.<br>Machine learning and applied
+          research.</div>
+      </div>
+    </div>
+    <p class="lab">This work was carried out at Vizuara. It is shared openly as a preprint — the
+      code, the data and every figure's provenance are public, and corrections from the community
+      are welcome.</p>
   </div>
 </section>
 

@@ -22,7 +22,10 @@
 \title{\vspace{-1.2cm}\bfseries The optimal stroke rhythm of a reciprocal
 microswimmer reverses with fluid memory}
 
-\author[ ]{Vizuara Research}
+\author[1]{Raj Dandekar}
+\author[1]{Rajat Dandekar}
+\author[1]{Sreedath Panat}
+\affil[1]{\normalfont Vizuara Research}
 \affil[ ]{\normalfont\itshape Preprint --- a computational study. Code and data:
 \texttt{github.com/RajatDandekar/swimmer-rhythm}}
 \date{\today}
@@ -265,10 +268,15 @@ machinery.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\textwidth]{figs/fig5_rl.pdf}
-\caption{Reinforcement learning. (a) The strategy an agent learns from reward alone at each fluid;
-colour is the learned rhythm, which flips from open to closed at the crossover. (b) Learning
-curves: reward relative to the sinusoid, climbing as the agent learns.}
+\includegraphics[width=\textwidth]{figs/fig_rl_learn.pdf}
+\caption{Reinforcement learning: the rhythm found from reward alone. The policy is a
+$65$-parameter network trained by REINFORCE; the reward is net displacement per stroke at a fixed
+energy budget. (a) Reward relative to the plain stroke, climbing as the agent trains at three
+fluids --- it begins knowing nothing and improves from the scalar reward. (b) The gaits it settles
+on: in a low-memory fluid it learns to dawdle open, in a high-memory fluid closed (dots equally
+spaced in time; where they bunch, the swimmer dawdles). Under a na\"ive reward the agent instead
+exploits actuation amplitude and lingers closed everywhere; only the fixed-energy reward recovers
+the reversal.}
 \label{fig:rl}
 \end{figure}
 

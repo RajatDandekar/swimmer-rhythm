@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.29)  31 JUL 2026 17:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.29)  31 JUL 2026 17:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -504,12 +504,12 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 \Hy@SectionHShift=\skip56
 )
 LaTeX Font Info:    Trying to load font information for T1+ntxtlf on input line
- 30.
+ 33.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/t1ntxtlf.fd
 File: t1ntxtlf.fd 2021/05/24 v1.1 font definition file for T1/ntx/tlf
 )
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.95pt on input line 30.
+(Font)              scaled to size 10.95pt on input line 33.
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
@@ -519,51 +519,51 @@ File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
 (./paper.aux)
 \openout1 = `paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 30.
+LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 33.
 LaTeX Font Info:    Trying to load font information for OML+ntxmi on input line
- 30.
+ 33.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/omlntxmi.fd
 File: omlntxmi.fd 2015/08/25 Fontinst v1.933 font definitions for OML/ntxmi.
 )
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 33.
 LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 
-30.
+33.
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 33.
 LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line
- 30.
+ 33.
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/lmsntxsy.fd
 File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
 )
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 33.
 LaTeX Font Info:    Trying to load font information for LMX+ntxexx on input lin
-e 30.
+e 33.
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/lmxntxexx.fd
 File: lmxntxexx.fd 2016/07/03 Fontinst v1.933 font definitions for LMX/ntxexx.
 )
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -626,7 +626,7 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 30.
+Package hyperref Info: Link coloring OFF on input line 33.
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -640,168 +640,168 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count308
 )
-LaTeX Info: Redefining \ref on input line 30.
-LaTeX Info: Redefining \pageref on input line 30.
-LaTeX Info: Redefining \nameref on input line 30.
+LaTeX Info: Redefining \ref on input line 33.
+LaTeX Info: Redefining \pageref on input line 33.
+LaTeX Info: Redefining \nameref on input line 33.
  (./paper.out) (./paper.out)
 \@outlinefile=\write3
 \openout3 = `paper.out'.
 
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 17.28pt on input line 32.
+(Font)              scaled to size 17.28pt on input line 35.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 17.28pt on input line 32.
+(Font)              scaled to size 17.28pt on input line 35.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.0pt on input line 32.
+(Font)              scaled to size 12.0pt on input line 35.
 LaTeX Font Info:    Trying to load font information for OT1+minntx on input lin
-e 32.
+e 35.
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/ot1minntx.fd
 File: ot1minntx.fd 2022/01/20 v1.0 font definition file for OT1/minntx
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 32.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 35.
 
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 32.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 35.
 
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+ntxmia on input line 
-32.
+35.
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/untxmia.fd
 File: untxmia.fd 2018/04/14 Fontinst v1.933 font definitions for U/ntxmia.
 )
 LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 
-32.
+35.
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2015/03/20 Fontinst v1.933 font definitions for U/ntxsym.
 )
 LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 
-32.
+35.
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 32.
+(Font)              scaled to size 8.0pt on input line 35.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 32.
+(Font)              scaled to size 10.0pt on input line 35.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 10.0pt on input line 32.
+(Font)              scaled to size 10.0pt on input line 35.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 7.3pt on input line 32.
+(Font)              scaled to size 7.3pt on input line 35.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.3pt on input line 32.
+(Font)              scaled to size 7.3pt on input line 35.
 LaTeX Font Info:    Trying to load font information for T1+ntxtt on input line 
-32.
+35.
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/t1ntxtt.fd
 File: t1ntxtt.fd 2012/04/20 v3.1
 )
 LaTeX Font Info:    Trying to load font information for T1+txtt on input line 3
-2.
+5.
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/txfonts/t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Font shape `T1/ntxtt/m/it' in size <10> not available
-(Font)              Font shape `T1/txtt/m/sl' tried instead on input line 32.
+(Font)              Font shape `T1/txtt/m/sl' tried instead on input line 35.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.0pt on input line 34.
+(Font)              scaled to size 10.0pt on input line 37.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 14.4pt on input line 57.
+(Font)              scaled to size 14.4pt on input line 60.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 14.4pt on input line 57.
+(Font)              scaled to size 14.4pt on input line 60.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 10.95pt on input line 66.
-LaTeX Font Info:    Trying to load font information for T1+qhv on input line 83
+(Font)              scaled to size 10.95pt on input line 69.
+LaTeX Font Info:    Trying to load font information for T1+qhv on input line 86
 .
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/tex-gyre/t1qhv.fd
 File: t1qhv.fd 2009/09/25 v1.2 font definition file for T1/qhv
 )
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 10.29301pt on input line 83.
+(Font)              scaled to size 10.29301pt on input line 86.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 7.52002pt on input line 83.
+(Font)              scaled to size 7.52002pt on input line 86.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 5.73401pt on input line 83.
+(Font)              scaled to size 5.73401pt on input line 86.
  [1
 
 {/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.95pt on input line 103.
+(Font)              scaled to size 10.95pt on input line 106.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 12.0pt on input line 118.
+(Font)              scaled to size 12.0pt on input line 121.
 <figs/fig1_reversal.pdf, id=76, 408.86188pt x 195.54454pt>
 File: figs/fig1_reversal.pdf Graphic file (type pdf)
 <use figs/fig1_reversal.pdf>
-Package pdftex.def Info: figs/fig1_reversal.pdf  used on input line 134.
+Package pdftex.def Info: figs/fig1_reversal.pdf  used on input line 137.
 (pdftex.def)             Requested size: 472.31595pt x 225.90088pt.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 9.40002pt on input line 138.
+(Font)              scaled to size 9.40002pt on input line 141.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 6.86201pt on input line 138.
+(Font)              scaled to size 6.86201pt on input line 141.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 5.17001pt on input line 138.
+(Font)              scaled to size 5.17001pt on input line 141.
 <figs/fig2_transfer.pdf, id=80, 301.50702pt x 191.37709pt>
 File: figs/fig2_transfer.pdf Graphic file (type pdf)
 <use figs/fig2_transfer.pdf>
-Package pdftex.def Info: figs/fig2_transfer.pdf  used on input line 153.
+Package pdftex.def Info: figs/fig2_transfer.pdf  used on input line 156.
 (pdftex.def)             Requested size: 292.83357pt x 185.875pt.
 <figs/fig3_mechanism.pdf, id=83, 489.64694pt x 290.42316pt>
 File: figs/fig3_mechanism.pdf Graphic file (type pdf)
 <use figs/fig3_mechanism.pdf>
-Package pdftex.def Info: figs/fig3_mechanism.pdf  used on input line 169.
+Package pdftex.def Info: figs/fig3_mechanism.pdf  used on input line 172.
 (pdftex.def)             Requested size: 472.31595pt x 280.15466pt.
  [2]
 <figs/fig4_theory.pdf, id=100, 437.86086pt x 175.68646pt>
 File: figs/fig4_theory.pdf Graphic file (type pdf)
 <use figs/fig4_theory.pdf>
-Package pdftex.def Info: figs/fig4_theory.pdf  used on input line 192.
+Package pdftex.def Info: figs/fig4_theory.pdf  used on input line 195.
 (pdftex.def)             Requested size: 472.31595pt x 189.51604pt.
 <figs/fig6_lag.pdf, id=107, 414.91847pt x 188.06763pt>
 File: figs/fig6_lag.pdf Graphic file (type pdf)
 <use figs/fig6_lag.pdf>
-Package pdftex.def Info: figs/fig6_lag.pdf  used on input line 231.
+Package pdftex.def Info: figs/fig6_lag.pdf  used on input line 234.
 (pdftex.def)             Requested size: 472.31595pt x 214.08937pt.
  [3 <./figs/fig1_reversal.pdf>]
 <figs/fig7_movie.pdf, id=200, 378.51413pt x 93.89227pt>
 File: figs/fig7_movie.pdf Graphic file (type pdf)
 <use figs/fig7_movie.pdf>
-Package pdftex.def Info: figs/fig7_movie.pdf  used on input line 241.
+Package pdftex.def Info: figs/fig7_movie.pdf  used on input line 244.
 (pdftex.def)             Requested size: 472.31595pt x 117.16302pt.
-<figs/fig5_rl.pdf, id=203, 412.97687pt x 192.76215pt>
-File: figs/fig5_rl.pdf Graphic file (type pdf)
-<use figs/fig5_rl.pdf>
-Package pdftex.def Info: figs/fig5_rl.pdf  used on input line 268.
-(pdftex.def)             Requested size: 472.31595pt x 220.46292pt.
+<figs/fig_rl_learn.pdf, id=203, 413.34274pt x 203.80743pt>
+File: figs/fig_rl_learn.pdf Graphic file (type pdf)
+<use figs/fig_rl_learn.pdf>
+Package pdftex.def Info: figs/fig_rl_learn.pdf  used on input line 271.
+(pdftex.def)             Requested size: 472.31595pt x 232.89954pt.
 <figs/fig5_compare.pdf, id=205, 430.55818pt x 206.58983pt>
 File: figs/fig5_compare.pdf Graphic file (type pdf)
 <use figs/fig5_compare.pdf>
-Package pdftex.def Info: figs/fig5_compare.pdf  used on input line 284.
+Package pdftex.def Info: figs/fig5_compare.pdf  used on input line 292.
 (pdftex.def)             Requested size: 472.31595pt x 226.63795pt.
  [4 <./figs/fig2_transfer.pdf>] [5 <./figs/fig3_mechanism.pdf>]
 [6 <./figs/fig4_theory.pdf> <./figs/fig6_lag.pdf> <./figs/fig7_movie.pdf>]
-[7 <./figs/fig5_rl.pdf> <./figs/fig5_compare.pdf>] (./paper.aux)
+[7 <./figs/fig_rl_learn.pdf> <./figs/fig5_compare.pdf>] (./paper.aux)
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: F831677CE0FD5DD741CE768000F233F8;1534.
  ) 
 Here is how much of TeX's memory you used:
- 16012 strings out of 478268
- 243306 string characters out of 5846347
- 531594 words of memory out of 5000000
- 33894 multiletter control sequences out of 15000+600000
+ 16013 strings out of 478268
+ 243346 string characters out of 5846347
+ 532157 words of memory out of 5000000
+ 33895 multiletter control sequences out of 15000+600000
  588498 words of font info for 177 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,7n,117p,660b,456s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 69i,7n,117p,830b,456s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc}{/usr/l
 ocal/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{/usr/local/
 texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}</usr/local/texliv
@@ -816,10 +816,10 @@ s/txsya.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txsys.
 pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr
 /local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/te
 xlive/2022/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on paper.pdf (7 pages, 471246 bytes).
+Output written on paper.pdf (7 pages, 476684 bytes).
 PDF statistics:
- 835 PDF objects out of 1000 (max. 8388607)
- 333 compressed objects within 4 object streams
+ 834 PDF objects out of 1000 (max. 8388607)
+ 325 compressed objects within 4 object streams
  33 named destinations out of 1000 (max. 500000)
  113 words of extra memory for PDF output out of 10000 (max. 10000000)
 
