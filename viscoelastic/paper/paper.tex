@@ -44,17 +44,19 @@ we ask a question posed but never executed by \citet{mj2012}: in a viscoelastic 
 Stokes/Brinkman--Oldroyd-B solver for a two-bead reciprocal swimmer, we hold the shape path,
 excursion and period fixed and vary only the rhythm. We find that (i) rhythm alone changes the
 swimming speed by $31.5\%$ at otherwise identical actuation; (ii) the \emph{optimal} rhythm
-\emph{reverses} at a critical Deborah number $\Dec\!\approx\!0.81$ --- below it the swimmer should
+\emph{reverses} at a critical Deborah number $\Dec\!\approx\!0.81$: below it the swimmer should
 dawdle in the open configuration, above it in the closed one; and (iii) a stroke optimised for a
 low-memory fluid is \emph{worse than the plain sinusoid} in a high-memory fluid ($0.914\times$).
 A reduced-order analysis shows the reversal is the sign change of a three-wave (triple-product)
 correlation: the leading pair correlation is provably identical for time-reversed rhythms and
 cannot produce it. Resolving the field directly, the critical point is set by the balance of
-time-shifted stored-stress contributions --- one rhythm builds its advantage early in the stroke,
-the other late, and the fluid's memory decides which survives to propel; they cancel at $\Dec$. Finally, a reinforcement-learning agent trained only on displacement
-rediscovers the reversal from reward alone --- but only when constrained to a fixed energy
-budget, since an unconstrained agent games the actuation amplitude. The effect is reached three
-independent ways (search, theory, learning), which agree on both the result and its limits.
+time-shifted stored-stress contributions: one rhythm builds its advantage early in the stroke and
+the other late, and the finite memory of the fluid determines which contribution survives to
+propel, the two cancelling at $\Dec$. Finally, a reinforcement-learning agent trained only on
+displacement recovers the reversal from reward alone, but only when constrained to a fixed energy
+budget, since an unconstrained agent exploits the actuation amplitude instead of the timing. The
+effect is obtained by three independent methods (search, theory and learning), which agree on both
+the result and its limits.
 \end{abstract}
 
 \section{Introduction}
@@ -67,11 +69,11 @@ characteristic time $\lambda$, and this fading memory breaks the reversibility a
 \citet{lauga2007,fu2009} established that a reciprocal swimmer moves in such a fluid, and
 \citet{fu2009} gave the now-standard argument: writing a reciprocal stroke on a
 \emph{monotone reparametrisation of time}, the swimming speed is reparametrisation-invariant in a
-Newtonian fluid but not in a viscoelastic one --- ``the distance covered per period depends on the
+Newtonian fluid but not in a viscoelastic one: ``the distance covered per period depends on the
 rate of motion as well as the sequence of shapes.''
 
-That observation makes an obvious optimisation question available: if timing now matters, what is
-the \emph{best} timing, and does it depend on the fluid? \citet{mj2012}, optimising a
+This raises a natural optimisation question: if timing now matters, what is
+the best timing, and does it depend on the fluid? \citet{mj2012}, optimising a
 Najafi--Golestanian swimmer, found the same optimal phase in Stokes and in a shear-thinning fluid
 and remarked that ``for viscoelastic properties this may not be the optimum phase difference, due
 to the dependence of the fluid stress on its deformation history,'' and that this should be
@@ -101,7 +103,7 @@ digits, and bead-swap antisymmetry to $3\times10^{-18}$. Brinkman screening ($\e
 required for a convergent free-swimmer far field: the $2$D Stokes stresslet
 $\sim\!\cos2\theta/r^2$ produces a slowly and non-monotonically converging periodic image sum,
 giving a spurious amplitude exponent of $0.99$ against the theoretical $2.00$; screening restores
-$1.994$ in one line and is physically legitimate for a confined film.
+$1.994$ and is physically legitimate for a confined film.
 
 \paragraph{Rhythm as the control variable.} Following \citet{fu2009} we write the gap on a
 monotone phase reparametrisation,
@@ -125,10 +127,10 @@ Their swimming speeds nonetheless differ by $31.5\%$, converged to $0.09$ percen
 a fourfold refinement in timestep, a $1.5\times$ grid and a $1.5\times$ domain. In a Newtonian
 fluid the same comparison is identically zero (verified to $10^{-16}$).
 
-The central result is the Deborah-dependence of \emph{which} rhythm wins,
+The main result is the Deborah-number dependence of \emph{which} rhythm wins,
 Fig.~\ref{fig:reversal}(b). Below $\Dec\!\approx\!0.81$ the linger-open rhythm is faster; above
-it, the linger-closed rhythm; at $\Dec$ they are equal to four decimal places. This is a sign
-change in the optimal strategy, not a magnitude shift. We verified the crossover point
+it, the linger-closed rhythm; at $\Dec$ the two are equal to four decimal places. This is a sign
+change in the optimal strategy, not a change of magnitude. We verified the crossover point
 independently: choosing $\De=0.81$ from a separate calculation and running the solver there gives
 a speed ratio of $1.0002$.
 
@@ -145,10 +147,10 @@ $\Dec\!\approx\!0.81$, so the optimal rhythm reverses.}
 \subsection{The optimum is De-specific, and mis-tuning is costly}
 Searching thousands of rhythms at a fixed energy budget and locating the optimum in five distinct
 fluids gives Fig.~\ref{fig:transfer}: each optimised rhythm wins its own fluid and loses the
-others (the diagonal dominates every column). The top-right entry is the sharp one: the stroke
-optimised for $\De=0.3$ scores $0.914$ at $\De=3.0$ --- below unity, i.e.\ \emph{beaten by the
-unoptimised sinusoid}. Being highly optimised for the wrong fluid is an active handicap, not
-merely suboptimal. Since $\De$ is not locally observable to the swimmer, this is a genuine
+others (the diagonal dominates every column). The top-right entry is the decisive case: the
+stroke optimised for $\De=0.3$ scores $0.914$ at $\De=3.0$, below unity and so \emph{beaten by
+the unoptimised sinusoid}. Optimising heavily for the wrong fluid is therefore actively harmful,
+not merely suboptimal. Because $\De$ is not locally observable to the swimmer, this is an
 adaptive-control problem rather than a one-shot optimisation.
 
 \begin{figure}[t]
@@ -186,9 +188,9 @@ $\hat g_n = J_{n-1}(b)$, and since $J_k(-b)=(-1)^k J_k(b)$ the magnitudes $|\hat
 unchanged under $b\!\to\!-b$. The pair term depends only on $|\hat g_n|^2$ and is therefore
 \emph{identical} for the two rhythms (Fig.~\ref{fig:theory}a) --- it cannot produce a reversal.
 The triple term is a three-wave correlation, sensitive to the phases; it is exactly antisymmetric,
-$Q(+b)=-Q(-b)$, and crosses zero (Fig.~\ref{fig:theory}b). \textbf{The reversal is the sign change
-of this triple correlation.} This also explains why a memoryless $0$D reduction never reproduces
-it: that model retains only the pair term.
+$Q(+b)=-Q(-b)$, and crosses zero (Fig.~\ref{fig:theory}b). The reversal is precisely the sign
+change of this triple correlation. This also explains why a memoryless $0$D reduction never
+reproduces it: that model retains only the pair term.
 
 \begin{figure}[t]
 \centering
@@ -210,21 +212,21 @@ solver.
 
 The polymer velocity lags the shape by an angle $\phi(\De)$ that decreases from $83^\circ$ to
 $56^\circ$ across the range (Fig.~\ref{fig:lag}a), reflecting the growing elastic (in-phase)
-component of the stored stress. Crucially the two rhythms lag \emph{differently}: the
+component of the stored stress. The two rhythms lag by \emph{different} amounts: the
 linger-closed rhythm lags consistently more than linger-open, and the gap widens monotonically
 from $3.6^\circ$ to $11.5^\circ$ as $\De$ increases. In the plane of polymer velocity against
 shape each rhythm traces a distinct hysteresis loop (Fig.~\ref{fig:lag}c); the enclosed area is
 the net propulsion, and which loop encloses more area flips at $\Dec$ (Fig.~\ref{fig:lag}b).
 
 The spatial origin is in Fig.~\ref{fig:movie}: the stored-stress \emph{difference} between the
-two rhythms, followed through one cycle at $\De\!\approx\!\Dec$. It oscillates in sign --- the
+two rhythms, followed through one cycle at $\De\!\approx\!\Dec$. It oscillates in sign: the
 linger-closed rhythm leaves excess stress during the opening phase ($\theta\lesssim0.5\pi$,
 warm), the linger-open rhythm during the closing phase ($\theta\gtrsim0.7\pi$, cool). The net
 drift difference is the cycle integral of this field. \emph{At $\Dec$ the two contributions
 cancel}; below it the closing-phase (open) contribution dominates and open wins, above it the
 opening-phase (closed) contribution dominates and closed wins. The finite relaxation time sets
 \emph{when} each rhythm's stored stress is still present to couple to the mobility, and therefore
-sets the balance --- so $\Dec$ is where the time-shifted stress contributions of the two rhythms
+sets the balance, so that $\Dec$ is where the time-shifted stress contributions of the two rhythms
 integrate to equality. This is a definite, measurable condition; but it involves the full spatial
 stress field, which is why the leading-order scalar theory locates it only approximately and the
 computation is required for the precise value.
@@ -252,16 +254,16 @@ oscillates within the cycle; at $\Dec$ its integral vanishes, which is the rever
 \subsection{Discovered by reinforcement learning}
 Finally we pose the problem as an agent would face it: a policy (a $65$-parameter network trained
 by REINFORCE, no gradient through the solver, no supplied answer) receives only the net
-displacement as reward. In a Newtonian fluid this Markov decision process is \emph{degenerate} ---
+displacement as reward. In a Newtonian fluid this Markov decision process is \emph{degenerate}:
 the scallop theorem leaves no hidden state and every policy scores zero, so there is nothing to
 learn. Fluid memory is exactly what supplies the hidden state and the delayed consequences that
 make it a genuine learning problem.
 
 An agent given the na\"ive reward ``maximise displacement'' learns to linger closed at
-\emph{every} $\De$: it quietly spends twice the energy budget, exploiting actuation amplitude
-rather than timing --- the same amplitude confound we retract in \S\ref{sec:disc}. Only under a
-fixed energy budget --- the physically correct ``go far for your power'' objective --- does the
-reversal reappear. Agents trained separately at each fluid then learn \emph{opposite} strategies,
+\emph{every} $\De$: it spends roughly twice the energy budget, exploiting actuation amplitude
+rather than timing (the same amplitude confound we retract in \S\ref{sec:disc}). Only under a
+fixed energy budget, the physically appropriate objective of maximal displacement at fixed power,
+does the reversal reappear. Agents trained separately at each fluid then learn \emph{opposite} strategies,
 open below $\Dec$ and closed above, flipping sign at the same crossover found by search and by
 theory (Fig.~\ref{fig:rl}). The reversal is thus reproduced by three methods that share no
 machinery.
@@ -280,8 +282,8 @@ the reversal.}
 \label{fig:rl}
 \end{figure}
 
-The three routes do not agree on $\Dec$ to three digits --- search gives $0.81$, the
-leading-order theory $0.61$, and the learner $0.86$ --- but that is the weaker statement. Their
+The three routes do not agree on $\Dec$ to three digits (search gives $0.81$, the
+leading-order theory $0.61$, and the learner $0.86$), but that is the weaker statement. Their
 transitions have the \emph{same shape}: rescaling the Deborah number by each method's own
 crossover, the two independent transition curves collapse onto one (Fig.~\ref{fig:collapse}),
 and the agent's crossover falls at unity by construction. Three unrelated methods thus locate not
@@ -302,9 +304,9 @@ on the existence of the effect.}
 \section{Discussion}\label{sec:disc}
 The reversal, the $De$-specific optimum and the harmful mis-tuning are, to our knowledge, new; a
 structured search of the arXiv for ``optimal stroke'' and ``viscoelastic'' returns no prior
-report, and two adversarial literature searches did not find one. What is \emph{not} new, and we
-stress it, is the framing: the monotone-reparametrisation argument and the fact that rhythm can
-matter are due to \citet{fu2009}, whose method we use.
+report, and a further targeted search of the recent literature did not find one. What is
+\emph{not} new, and we state this plainly, is the framing: the monotone-reparametrisation argument
+and the fact that rhythm can matter are due to \citet{fu2009}, whose method we use.
 
 We also record a negative result. Within the single-mode family
 $\theta=t+b\sin t$, the crossover collapses cleanly onto
@@ -322,8 +324,8 @@ inaccessible; a $2026$ preprint reports a similar reversal driven by elasticity 
 
 The practical implication is the control statement: for a swimmer in a fluid whose memory it
 cannot directly sense, no fixed stroke is optimal, and a stroke tuned for the wrong fluid is worse
-than a naive one. That is precisely the regime in which learning, rather than one-shot
-optimisation, is warranted --- and the regime that the scallop theorem forbids in a Newtonian
+than a naive one. That is the regime in which learning, rather than one-shot
+optimisation, is warranted, and the regime that the scallop theorem forbids in a Newtonian
 fluid.
 
 \begin{thebibliography}{9}

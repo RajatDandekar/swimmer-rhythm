@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.29)  31 JUL 2026 18:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.29)  31 JUL 2026 19:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -716,77 +716,77 @@ LaTeX Font Info:    Font shape `T1/ntxtt/m/it' in size <10> not available
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 10.0pt on input line 37.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 14.4pt on input line 60.
+(Font)              scaled to size 14.4pt on input line 62.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 14.4pt on input line 60.
+(Font)              scaled to size 14.4pt on input line 62.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 10.95pt on input line 69.
-LaTeX Font Info:    Trying to load font information for T1+qhv on input line 86
+(Font)              scaled to size 10.95pt on input line 71.
+LaTeX Font Info:    Trying to load font information for T1+qhv on input line 88
 .
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/tex-gyre/t1qhv.fd
 File: t1qhv.fd 2009/09/25 v1.2 font definition file for T1/qhv
 )
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 10.29301pt on input line 86.
+(Font)              scaled to size 10.29301pt on input line 88.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 7.52002pt on input line 86.
+(Font)              scaled to size 7.52002pt on input line 88.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 5.73401pt on input line 86.
+(Font)              scaled to size 5.73401pt on input line 88.
  [1
 
 {/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.95pt on input line 106.
+(Font)              scaled to size 10.95pt on input line 108.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 12.0pt on input line 121.
+(Font)              scaled to size 12.0pt on input line 123.
 <figs/fig1_reversal.pdf, id=76, 408.86188pt x 195.54454pt>
 File: figs/fig1_reversal.pdf Graphic file (type pdf)
 <use figs/fig1_reversal.pdf>
-Package pdftex.def Info: figs/fig1_reversal.pdf  used on input line 137.
+Package pdftex.def Info: figs/fig1_reversal.pdf  used on input line 139.
 (pdftex.def)             Requested size: 472.31595pt x 225.90088pt.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 9.40002pt on input line 141.
+(Font)              scaled to size 9.40002pt on input line 143.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 6.86201pt on input line 141.
+(Font)              scaled to size 6.86201pt on input line 143.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 5.17001pt on input line 141.
+(Font)              scaled to size 5.17001pt on input line 143.
 <figs/fig2_transfer.pdf, id=80, 301.50702pt x 191.37709pt>
 File: figs/fig2_transfer.pdf Graphic file (type pdf)
 <use figs/fig2_transfer.pdf>
-Package pdftex.def Info: figs/fig2_transfer.pdf  used on input line 156.
+Package pdftex.def Info: figs/fig2_transfer.pdf  used on input line 158.
 (pdftex.def)             Requested size: 292.83357pt x 185.875pt.
 <figs/fig3_mechanism.pdf, id=83, 489.64694pt x 290.42316pt>
 File: figs/fig3_mechanism.pdf Graphic file (type pdf)
 <use figs/fig3_mechanism.pdf>
-Package pdftex.def Info: figs/fig3_mechanism.pdf  used on input line 172.
+Package pdftex.def Info: figs/fig3_mechanism.pdf  used on input line 174.
 (pdftex.def)             Requested size: 472.31595pt x 280.15466pt.
  [2]
 <figs/fig4_theory.pdf, id=100, 455.09712pt x 184.03366pt>
 File: figs/fig4_theory.pdf Graphic file (type pdf)
 <use figs/fig4_theory.pdf>
-Package pdftex.def Info: figs/fig4_theory.pdf  used on input line 195.
+Package pdftex.def Info: figs/fig4_theory.pdf  used on input line 197.
 (pdftex.def)             Requested size: 472.31595pt x 190.99734pt.
 <figs/fig6_lag.pdf, id=107, 414.91847pt x 188.06763pt>
 File: figs/fig6_lag.pdf Graphic file (type pdf)
 <use figs/fig6_lag.pdf>
-Package pdftex.def Info: figs/fig6_lag.pdf  used on input line 234.
+Package pdftex.def Info: figs/fig6_lag.pdf  used on input line 236.
 (pdftex.def)             Requested size: 472.31595pt x 214.08937pt.
  [3 <./figs/fig1_reversal.pdf>]
 <figs/fig7_movie.pdf, id=200, 378.51413pt x 93.89227pt>
 File: figs/fig7_movie.pdf Graphic file (type pdf)
 <use figs/fig7_movie.pdf>
-Package pdftex.def Info: figs/fig7_movie.pdf  used on input line 244.
+Package pdftex.def Info: figs/fig7_movie.pdf  used on input line 246.
 (pdftex.def)             Requested size: 472.31595pt x 117.16302pt.
 <figs/fig_rl_learn.pdf, id=203, 413.34274pt x 203.80743pt>
 File: figs/fig_rl_learn.pdf Graphic file (type pdf)
 <use figs/fig_rl_learn.pdf>
-Package pdftex.def Info: figs/fig_rl_learn.pdf  used on input line 271.
+Package pdftex.def Info: figs/fig_rl_learn.pdf  used on input line 273.
 (pdftex.def)             Requested size: 472.31595pt x 232.89954pt.
 <figs/fig5_compare.pdf, id=205, 430.55818pt x 206.58983pt>
 File: figs/fig5_compare.pdf Graphic file (type pdf)
 <use figs/fig5_compare.pdf>
-Package pdftex.def Info: figs/fig5_compare.pdf  used on input line 292.
+Package pdftex.def Info: figs/fig5_compare.pdf  used on input line 294.
 (pdftex.def)             Requested size: 472.31595pt x 226.63795pt.
  [4 <./figs/fig2_transfer.pdf>] [5 <./figs/fig3_mechanism.pdf>]
 [6 <./figs/fig4_theory.pdf> <./figs/fig6_lag.pdf> <./figs/fig7_movie.pdf>]
@@ -816,7 +816,7 @@ s/txsya.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txsys.
 pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr
 /local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/te
 xlive/2022/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on paper.pdf (7 pages, 475532 bytes).
+Output written on paper.pdf (7 pages, 475498 bytes).
 PDF statistics:
  831 PDF objects out of 1000 (max. 8388607)
  325 compressed objects within 4 object streams

@@ -13,7 +13,7 @@
 <link rel="icon" href="figures/vizuara-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Serif+4:opsz,wght@8..60,380;8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Source+Serif+4:opsz,wght@8..60,380;8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --paper:#fcfbf7; --panel:#ffffff; --sink:#f6f4ec;
@@ -21,7 +21,7 @@
   --line:#e7e2d5; --line2:#d9d3c3;
   --accent:#155e8c; --accent-soft:#e8f0f6;
   --hot:#b3006b; --warm:#c0641a; --cool:#155e8c; --good:#1c7a55;
-  --disp:'Fraunces',Georgia,serif;
+  --disp:'Newsreader',Georgia,serif;
   --body:'Source Serif 4',Georgia,serif;
   --ui:'Inter',system-ui,sans-serif;
   --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
@@ -67,11 +67,34 @@ strong{font-weight:600}
 .hero{padding:calc(var(--s6)*.9) 0 var(--s5);text-align:center;
   background:radial-gradient(120% 60% at 50% -10%,rgba(21,94,140,.05),transparent 60%)}
 .hero .eyebrow{color:var(--hot)}
-.hero h1{font-size:clamp(38px,6.6vw,74px);line-height:1.04;letter-spacing:-.028em;
-  margin:22px auto 0;max-width:15ch;font-weight:600}
+.hero .solved{display:inline-flex;align-items:center;gap:9px;margin:0 auto;
+  font-family:var(--ui);font-size:13px;font-weight:600;color:#0d5f3f;
+  background:rgba(28,122,85,.08);border:1px solid rgba(28,122,85,.25);
+  padding:7px 15px;border-radius:999px}
+.hero .solved .dot{width:8px;height:8px;border-radius:50%;background:#1c7a55;
+  box-shadow:0 0 0 4px rgba(28,122,85,.15)}
+.hero h1{font-size:clamp(40px,7vw,80px);line-height:1.02;letter-spacing:-.032em;
+  margin:20px auto 0;max-width:16ch;font-weight:700}
+.hero h1 .rev{color:var(--hot);font-style:italic}
+.hero h1 .rev::after{content:"";display:block;height:.09em;margin-top:.02em;
+  background:linear-gradient(90deg,var(--hot),rgba(179,0,107,.15));border-radius:2px}
 .hero .dek{font-family:var(--body);font-size:clamp(19px,2.3vw,23px);line-height:1.5;
-  color:var(--ink2);max-width:40rem;margin:26px auto 0;font-weight:400}
-.hero .dek .rev{color:var(--hot);font-style:italic;font-weight:600}
+  color:var(--ink2);max-width:42rem;margin:24px auto 0;font-weight:400}
+.hero .dek strong{color:var(--ink);font-weight:600}
+.hero .proofs{margin:30px auto 4px;display:flex;gap:10px;justify-content:center;
+  flex-wrap:wrap;align-items:stretch}
+.hero .proofs .chip{display:flex;flex-direction:column;gap:2px;text-align:left;
+  padding:11px 16px;border-radius:11px;background:var(--panel);border:1px solid var(--line2);
+  min-width:150px}
+.hero .proofs .chip .n{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted)}
+.hero .proofs .chip .m{font-family:var(--ui);font-size:15px;font-weight:600;color:var(--ink)}
+.hero .proofs .chip.a{border-color:rgba(26,111,176,.4)}.hero .proofs .chip.a .m{color:#1a6fb0}
+.hero .proofs .chip.b{border-color:rgba(208,106,28,.4)}.hero .proofs .chip.b .m{color:#c05f18}
+.hero .proofs .chip.c{border-color:rgba(179,0,107,.4)}.hero .proofs .chip.c .m{color:var(--hot)}
+.hero .proofs .plus{display:flex;align-items:center;color:var(--faint);font-size:18px}
+.hero .agree{font-family:var(--ui);font-size:13.5px;color:var(--muted);margin:12px auto 0}
+.hero .agree b{color:#0d5f3f;font-weight:600}
 .byline{margin:34px auto 0;font-family:var(--ui);font-size:14.5px;color:var(--muted)}
 .byline .who{color:var(--ink);font-weight:600}
 .cta{margin:26px auto 0;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
@@ -257,18 +280,31 @@ footer .disc{max-width:var(--wide);margin:var(--s4) auto 0;padding:24px 28px 0;
 <a id="top"></a>
 <section class="hero">
   <div class="wrap">
-    <div class="eyebrow">A 2012 question · open for fourteen years</div>
-    <h1>The best way to swim can reverse itself.</h1>
-    <p class="dek">In a fluid with memory, a microswimmer's optimal stroke rhythm does not drift
-      as the fluid changes — it <span class="rev">reverses</span>. A question posed in 2012, run
-      for the first time, and confirmed three independent ways.</p>
-    <div class="byline"><span class="who">Vizuara Research</span> &nbsp;·&nbsp; Preprint,
-      computational study &nbsp;·&nbsp; 2026</div>
+    <div class="solved"><span class="dot"></span>An open question since 2012 — now solved</div>
+    <h1>The best way to swim<br><span class="rev">reverses</span> with the fluid.</h1>
+    <p class="dek">A microswimmer's optimal stroke rhythm was expected to <em>shift</em> as the
+      surrounding fluid changed. It does something stronger: it <strong>flips into its exact
+      opposite</strong>. The question was posed in 2012 and never run — we ran it, and proved the
+      answer <strong>three independent ways</strong>.</p>
+    <div class="proofs">
+      <div class="chip a"><span class="n">Proof 1 — numerical</span><span class="m">Direct
+        search</span></div>
+      <div class="plus">+</div>
+      <div class="chip b"><span class="n">Proof 2 — analytic</span><span class="m">Closed-form
+        theory</span></div>
+      <div class="plus">+</div>
+      <div class="chip c"><span class="n">Proof 3 — learned</span><span class="m">Reinforcement
+        learning</span></div>
+    </div>
+    <p class="agree">Three methods that share no assumptions — a solver, a pencil-and-paper
+      calculation, and an agent trained only on reward — <b>land on the same reversal</b>.</p>
     <div class="cta">
       <a class="solid" href="figures/swimmer-rhythm-paper.pdf">Read the paper</a>
       <a class="out" href="https://github.com/RajatDandekar/swimmer-rhythm">Code &amp; data</a>
       <a class="out" href="#try">Try the simulation</a>
     </div>
+    <div class="byline"><span class="who">Vizuara Research</span> &nbsp;·&nbsp; Preprint,
+      computational study &nbsp;·&nbsp; 2026</div>
   </div>
   <div class="heroplate">
     <div class="frame"><img src="figures/hero.png" alt="A microscopic two-bead swimmer suspended in a fluid threaded with stretched polymer filaments"></div>
@@ -386,6 +422,21 @@ footer .disc{max-width:var(--wide);margin:var(--s4) auto 0;padding:24px 28px 0;
       Since a swimmer cannot directly sense the fluid's memory, this is a genuine control problem,
       not a one-shot calculation.</p>
   </div></div>
+
+  <figure>
+    <div class="frame"><video controls playsinline autoplay muted loop preload="metadata"
+      poster="figures/swimmer-gaits-poster.png" style="width:100%;display:block">
+      <source src="figures/swimmer-gaits.mp4" type="video/mp4"></video></div>
+    <figcaption><span class="fn">Simulation.</span> <strong>The two gaits, side by side, from the
+      actual solver.</strong> The same spectral Stokes–Oldroyd-B code behind every number here,
+      run in two fluids at once. On the left, weak fluid memory (De&nbsp;=&nbsp;0.5): the winning
+      rhythm dwells while <span style="color:#1a6fb0">open</span>. On the right, strong memory
+      (De&nbsp;=&nbsp;2.0): it dwells while <span style="color:#c05f18">closed</span>. The
+      streamlines are the real flow the swimmer drives and the contour lines are the stored elastic
+      stress, both deforming through the stroke; the meter at the bottom races each winning rhythm
+      against its opposite. Same body, same effort, same path — only the timing differs, and the
+      winner flips between the two fluids.</figcaption>
+  </figure>
 
   <div class="wrap" id="try">
     <div class="sim">

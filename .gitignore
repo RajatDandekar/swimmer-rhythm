@@ -10,3 +10,4 @@ node_modules/
 # scratch
 *.tmp
 .vercel
+viscoelastic/swim_frames.npz
