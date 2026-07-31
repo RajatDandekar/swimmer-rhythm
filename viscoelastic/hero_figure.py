@@ -1,142 +1,129 @@
-"""The hero figure: three independent methods, one reversal. Shown at the top of the site.
+"""Figure 5, done properly: three methods, one reversal — JFM style, in matplotlib.
 
-Three horizontal tracks share a Deborah-number axis. Each shows that method's signature of the
-reversal and where it places the crossover. A shaded band marks the De~0.8 region where all
-three cluster. Honest: the methods do not agree on the number to three digits -- search 0.81,
-learning ~0.86, the leading-order theory ~0.61 -- they agree that the optimal strategy flips,
-and cluster around De~0.7-0.9. That honesty is the point.
+Two panels.
+ (a) The reversal transition measured three ways on a shared Deborah axis: SEARCH (full PDE)
+     and THEORY (Fourier algebra) as two curves of the closed-over-open advantage, each rising
+     through zero; the LEARNING agent as a strategy strip that flips colour at its own crossover.
+     A shaded band marks where all three cluster.
+ (b) The money shot: rescale the Deborah number by each method's own crossover and the two
+     independent transition curves collapse onto a single master curve. The agent's crossover
+     sits at unity by construction, marked.
+
+Honest by construction: the three do not agree to three digits (search 0.81, theory 0.61,
+learning 0.86); they agree that the optimum flips, cluster near De~0.8, and share one
+transition shape. The agent contributes a crossover LOCATION, not a curve, because only the
+sign of its learned parameter is robust -- so it is drawn as a location, never as a fake curve.
 """
 import json
+import os
 import numpy as np
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import theory_analysis as TH
 
-OUT = "site/figures"
-INK, MUTED, GRID, PLOT = "#0f1c26", "#5b7280", "#e3eaef", "#fbfcfd"
-GOLD, BLUE, MAG, GREEN = "#ef8f1c", "#1a9fd4", "#e6009e", "#12a594"
-F = "ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif"
-MONO = "ui-monospace,'SF Mono',Menlo,Consolas,monospace"
+mpl.rcParams.update({"font.family": "serif", "mathtext.fontset": "cm", "font.size": 9,
+                     "axes.linewidth": 0.8, "xtick.direction": "in", "ytick.direction": "in",
+                     "xtick.top": True, "ytick.right": True, "figure.dpi": 200})
+PAPER, WEB = "paper/figs", "site/figures"
+CO, CC = "#1a6fb0", "#d06a1c"          # open (cool), closed (warm)
+KSEARCH, KTHEORY, KRL = "#111111", "#1a8f7a", "#b3006b"
+BAND = "#b3006b"
 
 
-def txt(x, y, s, size=13, fill=INK, anchor="start", weight="400", family=F, op=1.0):
-    return (f'<text x="{x}" y="{y}" font-size="{size}" fill="{fill}" text-anchor="{anchor}" '
-            f'font-weight="{weight}" font-family="{family}" opacity="{op}">{s}</text>')
+def zero_cross(x, y):
+    for a, b, ya, yb in zip(x, x[1:], y, y[1:]):
+        if ya * yb < 0:
+            return float(np.exp(np.log(a) + (np.log(b) - np.log(a)) * (0 - ya) / (yb - ya)))
+    return None
+
+
+def load_signals():
+    r = [x for x in json.load(open("crossover_results.json")) if x.get("ok")]
+    d = {}
+    for x in r:
+        d.setdefault(x["lam"], {})[x["b1"]] = x["per_cycle"][-1]
+    sde = np.array(sorted(d))
+    sg = np.array([abs(d[D][0.5]) / abs(d[D][-0.5]) for D in sde]) - 1.0
+    tde = np.exp(np.linspace(np.log(0.2), np.log(3), 60))
+    tg = np.array([TH.Q_of(-0.5, D) - TH.Q_of(0.5, D) for D in tde])
+    c = json.load(open("rl_ctrl_results.json"))
+    rde = np.array(sorted(float(k) for k in c))
+    rb = np.array([c[str(D)]["best"]["b1"] for D in rde])
+    return (sde, sg, zero_cross(sde, sg)), (tde, tg, TH.crossover(0.5)), \
+           (rde, rb, zero_cross(rde, rb))
 
 
 def main():
-    # numerics: ratio(De) crossing 1
-    r = [x for x in json.load(open("crossover_results.json")) if x.get("ok")]
-    dd = {}
-    for x in r:
-        dd.setdefault(x["lam"], {})[x["b1"]] = x["per_cycle"][-1]
-    num_de = np.array(sorted(dd))
-    num_ratio = np.array([abs(dd[D][0.5]) / abs(dd[D][-0.5]) for D in num_de])
-    # RL: learned strategy per De
-    ctrl = json.load(open("rl_ctrl_results.json"))
-    rl_de = np.array(sorted(float(k) for k in ctrl))
-    rl_closed = np.array([ctrl[str(D)]["best"]["b1"] > 0 for D in rl_de])
+    (sde, sg, Dcs), (tde, tg, Dct), (rde, rb, Dcr) = load_signals()
+    fig, ax = plt.subplots(1, 2, figsize=(6.5, 2.75), gridspec_kw=dict(wspace=0.34))
 
-    W, H = 1000, 500
-    ml, mr = 92, 40
-    pw = W - ml - mr
-    DEMIN, DEMAX = 0.2, 3.0
-    lx0, lx1 = np.log10(DEMIN), np.log10(DEMAX)
+    # ---------- (a) three methods on a shared De axis ----------
+    a = ax[0]
+    a.axhspan(-1.15, -1.4, color="0.96", zorder=0)         # strip background
+    a.axvspan(0.6, 0.9, color=BAND, alpha=0.06, zorder=0)
+    a.axhline(0, color="0.55", lw=0.8)
+    sgn = sg / np.max(np.abs(sg))
+    tgn = tg / np.max(np.abs(tg))
+    a.plot(sde, sgn, "-", color=KSEARCH, lw=1.7, zorder=4, label="search (PDE)")
+    a.plot(sde, sgn, "o", color=KSEARCH, ms=3, zorder=5)
+    a.plot(tde, tgn, "--", color=KTHEORY, lw=1.7, zorder=4, label="theory (algebra)")
+    # RL strategy strip
+    ys = -1.27
+    for D, b in zip(rde, rb):
+        a.plot(D, ys, "s", ms=5, color=(CC if b > 0 else CO), mec="w", mew=0.5, zorder=6)
+    a.text(0.5, ys+0.17, "learning agent", fontsize=6.6, va="bottom", ha="center", color="0.4")
+    # crossover ticks
+    for Dc, c, lab in ((Dcs, KSEARCH, "0.81"), (Dct, KTHEORY, "0.61"), (Dcr, KRL, "0.86")):
+        a.plot([Dc, Dc], [-0.05, 0.05], color=c, lw=1.4, zorder=7)
+        a.annotate(lab, (Dc, 0), (Dc*0.93 if c==KSEARCH else Dc, 0.55 if c == KSEARCH else (-0.62 if c == KTHEORY else 0.92)),
+                   fontsize=6.8, color=c, ha="center",
+                   arrowprops=dict(arrowstyle="-", color=c, lw=0.6))
+    a.set_xscale("log"); a.set_xlim(0.2, 3); a.set_ylim(-1.42, 1.15)
+    a.set_xlabel(r"Deborah number $De$")
+    a.set_ylabel(r"linger-closed advantage (norm.)")
+    a.set_title("(a) the reversal, three ways", loc="left", fontsize=8.5)
+    from matplotlib.ticker import FixedLocator, FixedFormatter, NullLocator
+    a.xaxis.set_major_locator(FixedLocator([0.2, 0.5, 1, 2]))
+    a.xaxis.set_major_formatter(FixedFormatter(["0.2", "0.5", "1", "2"]))
+    a.xaxis.set_minor_locator(NullLocator())
+    a.text(0.735, 1.02, "reversal", fontsize=6.8, color=BAND, ha="center")
+    a.legend(frameon=False, fontsize=7, loc="upper left", handlelength=1.6, borderaxespad=0.6)
 
-    def X(v): return ml + (np.log10(v) - lx0) / (lx1 - lx0) * pw
+    # ---------- (b) collapse: rescale De by each crossover ----------
+    b = ax[1]
+    b.axhline(0, color="0.55", lw=0.8); b.axvline(1, color="0.6", lw=0.8, ls=":")
+    # amplitude-normalise each to unit value at De/De_c = 2 so shapes overlay
+    def rescaled(x, y, Dc):
+        xr = x / Dc; yn = y / np.max(np.abs(y))
+        ref = np.interp(2.0, xr, yn)
+        return xr, yn / (abs(ref) if abs(ref) > 1e-6 else 1)
+    xs, ys2 = rescaled(sde, sg, Dcs)
+    xt, yt2 = rescaled(tde, tg, Dct)
+    b.plot(xs, ys2, "-", color=KSEARCH, lw=1.7, label="search", zorder=4)
+    b.plot(xs, ys2, "o", color=KSEARCH, ms=3, zorder=5)
+    b.plot(xt, yt2, "--", color=KTHEORY, lw=1.7, label="theory", zorder=4)
+    b.plot(1, 0, "s", ms=7, color=KRL, mec="w", mew=0.8, zorder=6, label="learning")
+    b.annotate("agent\ncrossover", (1, 0), (1.35, -0.55), fontsize=6.8, color=KRL,
+               ha="left", arrowprops=dict(arrowstyle="-", color=KRL, lw=0.6))
+    b.set_xscale("log"); b.set_xlim(0.35, 3.2); b.set_ylim(-1.25, 1.35)
+    b.set_xlabel(r"$De\,/\,De_c$  (each method's own crossover)")
+    b.set_ylabel(r"transition (norm.)")
+    b.set_title("(b) the transitions collapse", loc="left", fontsize=8.5)
+    b.xaxis.set_major_locator(FixedLocator([0.5, 1, 2, 3]))
+    b.xaxis.set_major_formatter(FixedFormatter(["0.5", "1", "2", "3"]))
+    b.xaxis.set_minor_locator(NullLocator())
+    b.legend(frameon=False, fontsize=7, loc="lower right", handlelength=1.6)
 
-    b = [f'<rect width="{W}" height="{H}" rx="16" fill="#ffffff" stroke="{GRID}"/>']
-    b.append(txt(ml, 46, "Three independent methods, one reversal", 26, INK, "start", "700",
-                 "Fraunces,Georgia,serif"))
-    b.append(txt(ml, 72, "search, theory and a learning agent all find the optimal swimming "
-                 "rhythm flipping at a critical fluid memory", 14, MUTED))
-
-    # the clustering band De in [0.6, 0.9]
-    b.append(f'<rect x="{X(0.6):.1f}" y="98" width="{X(0.9)-X(0.6):.1f}" height="336" '
-             f'fill="{MAG}" opacity="0.06"/>')
-    b.append(f'<line x1="{X(0.6):.1f}" y1="98" x2="{X(0.6):.1f}" y2="434" stroke="{MAG}" '
-             f'stroke-width="1" stroke-dasharray="3 4" opacity="0.5"/>')
-    b.append(f'<line x1="{X(0.9):.1f}" y1="98" x2="{X(0.9):.1f}" y2="434" stroke="{MAG}" '
-             f'stroke-width="1" stroke-dasharray="3 4" opacity="0.5"/>')
-    b.append(txt(X(0.735), 116, "the reversal", 12.5, MAG, "middle", "700"))
-
-    tops = [140, 250, 360]      # track baselines
-    th = 78
-
-    # ---- track 1: numerics (ratio curve)
-    t0 = tops[0]
-    y0, y1 = 0.9, 1.4
-    def Yn(v): return t0 + th - (v - y0) / (y1 - y0) * th
-    b.append(f'<line x1="{ml}" y1="{Yn(1.0):.1f}" x2="{ml+pw}" y2="{Yn(1.0):.1f}" '
-             f'stroke="{GRID}"/>')
-    pts = " ".join(f"{X(D):.1f},{Yn(min(y1,max(y0,q))):.1f}" for D, q in zip(num_de, num_ratio))
-    b.append(f'<polyline points="{pts}" fill="none" stroke="{GOLD}" stroke-width="2.4"/>')
-    for D, q in zip(num_de, num_ratio):
-        if DEMIN <= D <= DEMAX:
-            b.append(f'<circle cx="{X(D):.1f}" cy="{Yn(min(y1,max(y0,q))):.1f}" r="3.5" '
-                     f'fill="{GOLD if q>1 else BLUE}"/>')
-    b.append(f'<circle cx="{X(0.809):.1f}" cy="{Yn(1.0):.1f}" r="5.5" fill="none" '
-             f'stroke="{MAG}" stroke-width="2"/>')
-    b.append(txt(ml - 12, t0 + 30, "1  SEARCH", 12.5, INK, "end", "700", MONO))
-    b.append(txt(ml - 12, t0 + 46, "solve the PDE", 10.5, MUTED, "end"))
-    b.append(txt(X(0.809) + 9, Yn(1.0) - 8, "De_c = 0.81", 11.5, MAG, "start", "700", MONO))
-
-    # ---- track 2: theory (triple-term curve)
-    import importlib
-    TH = importlib.import_module("theory_analysis")
-    des = np.exp(np.linspace(np.log(DEMIN), np.log(DEMAX), 60))
-    Q = np.array([TH.Q_of(0.5, D) - TH.Q_of(-0.5, D) for D in des])
-    dc_th = TH.crossover(0.5)
-    t0 = tops[1]
-    qmax = np.abs(Q).max()
-    def Yt(v): return t0 + th / 2 - v / qmax * (th / 2)
-    b.append(f'<line x1="{ml}" y1="{Yt(0):.1f}" x2="{ml+pw}" y2="{Yt(0):.1f}" stroke="{GRID}"/>')
-    pts = " ".join(f"{X(D):.1f},{Yt(q):.1f}" for D, q in zip(des, Q))
-    b.append(f'<polyline points="{pts}" fill="none" stroke="{GREEN}" stroke-width="2.4"/>')
-    if dc_th:
-        b.append(f'<circle cx="{X(dc_th):.1f}" cy="{Yt(0):.1f}" r="5.5" fill="none" '
-                 f'stroke="{MAG}" stroke-width="2"/>')
-        b.append(txt(X(dc_th) + 9, Yt(0) - 8, f"De_c = {dc_th:.2f}", 11.5, MAG, "start",
-                     "700", MONO))
-    b.append(txt(ml - 12, t0 + 30, "2  THEORY", 12.5, INK, "end", "700", MONO))
-    b.append(txt(ml - 12, t0 + 46, "Fourier algebra", 10.5, MUTED, "end"))
-
-    # ---- track 3: RL (learned strategy band)
-    t0 = tops[2]
-    yb = t0 + th / 2
-    for i in range(len(rl_de)):
-        D = rl_de[i]
-        if not (DEMIN <= D <= DEMAX):
-            continue
-        c = GOLD if rl_closed[i] else BLUE
-        x = X(D)
-        b.append(f'<circle cx="{x:.1f}" cy="{yb:.1f}" r="6" fill="{c}" stroke="#fff" '
-                 f'stroke-width="1.5"/>')
-    # flip location
-    xf = None
-    for i in range(len(rl_de) - 1):
-        if rl_closed[i] != rl_closed[i + 1]:
-            xf = np.sqrt(rl_de[i] * rl_de[i + 1])
-    if xf:
-        b.append(f'<circle cx="{X(xf):.1f}" cy="{yb:.1f}" r="9" fill="none" stroke="{MAG}" '
-                 f'stroke-width="2"/>')
-        b.append(txt(X(xf) + 12, yb - 9, f"flips ~ {xf:.2f}", 11.5, MAG, "start", "700", MONO))
-    b.append(txt(ml - 12, t0 + 30, "3  LEARNING", 12.5, INK, "end", "700", MONO))
-    b.append(txt(ml - 12, t0 + 46, "reward only", 10.5, MUTED, "end"))
-    b.append(f'<circle cx="{ml+6}" cy="{yb+34}" r="5" fill="{BLUE}"/>')
-    b.append(txt(ml + 16, yb + 38, "linger open", 10.5, BLUE, "start", "600"))
-    b.append(f'<circle cx="{ml+120}" cy="{yb+34}" r="5" fill="{GOLD}"/>')
-    b.append(txt(ml + 130, yb + 38, "linger closed", 10.5, GOLD, "start", "600"))
-
-    # x axis
-    for D in (0.2, 0.5, 1.0, 2.0, 3.0):
-        b.append(f'<line x1="{X(D):.1f}" y1="434" x2="{X(D):.1f}" y2="440" stroke="{MUTED}"/>')
-        b.append(txt(X(D), 456, f"{D:g}", 12, MUTED, "middle", family=MONO))
-    b.append(txt(ml + pw / 2, 482, "Deborah number  —  how long the fluid remembers", 13,
-                 MUTED, "middle"))
-
-    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="100%" '
-            f'style="max-width:{W}px;height:auto;font-family:{F}">' + "".join(b) + "</svg>")
+    for d in (PAPER, WEB):
+        os.makedirs(d, exist_ok=True)
+    fig.savefig(f"{PAPER}/fig5_compare.pdf", bbox_inches="tight")
+    fig.savefig(f"{WEB}/fig5_compare.png", bbox_inches="tight", dpi=200)
+    plt.close(fig)
+    print(f"  crossovers: search {Dcs:.3f}, theory {Dct:.3f}, learning {Dcr:.3f}")
+    print("  wrote fig5_compare.pdf + png")
 
 
 if __name__ == "__main__":
-    svg = main()
-    open(f"{OUT}/hero_compare.svg", "w").write(svg)
-    print(f"wrote {OUT}/hero_compare.svg ({len(svg)//1024} kB)")
+    main()

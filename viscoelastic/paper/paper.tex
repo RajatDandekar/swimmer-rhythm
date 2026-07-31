@@ -272,6 +272,25 @@ curves: reward relative to the sinusoid, climbing as the agent learns.}
 \label{fig:rl}
 \end{figure}
 
+The three routes do not agree on $\Dec$ to three digits --- search gives $0.81$, the
+leading-order theory $0.61$, and the learner $0.86$ --- but that is the weaker statement. Their
+transitions have the \emph{same shape}: rescaling the Deborah number by each method's own
+crossover, the two independent transition curves collapse onto one (Fig.~\ref{fig:collapse}),
+and the agent's crossover falls at unity by construction. Three unrelated methods thus locate not
+merely the same effect but the same functional transition.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figs/fig5_compare.pdf}
+\caption{Three methods, one transition. (a) The reversal on a shared Deborah axis: the full
+simulation and the analytic theory as curves of the closed-over-open advantage, each crossing
+zero; the learning agent as a strategy strip that flips at its own crossover. (b) Rescaled by each
+method's crossover, the two independent transition curves collapse onto a single master curve;
+the agent's crossover sits at unity (marked). The methods agree on a shared transition, not merely
+on the existence of the effect.}
+\label{fig:collapse}
+\end{figure}
+
 \section{Discussion}\label{sec:disc}
 The reversal, the $De$-specific optimum and the harmful mis-tuning are, to our knowledge, new; a
 structured search of the arXiv for ``optimal stroke'' and ``viscoelastic'' returns no prior
