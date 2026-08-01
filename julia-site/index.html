@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The rhythm reversal, reproduced in Julia — Vizuara Research</title>
-<meta name="description" content="A viscoelastic microswimmer's optimal stroke rhythm reverses with fluid memory — reproduced from scratch in Julia, matching the NumPy solver to eight significant figures, with a SciML variant and a symbolic-regression law for the critical Deborah number.">
-<meta property="og:title" content="The rhythm reversal, reproduced in Julia">
-<meta property="og:description" content="Reproduced from scratch in Julia to eight significant figures. De_c ≈ 0.81, an OrdinaryDiffEq.jl variant, and a symbolic-regression law for the reversal.">
+<title>A 14-year-old problem, solved in Julia — Vizuara Research</title>
+<meta name="description" content="A microswimmer's best swimming rhythm reverses with the fluid's memory — a question open since 2012, built and answered from scratch in Julia with the SciML stack: an OrdinaryDiffEq.jl solver, a symbolic-regression law, and two discovered constants.">
+<meta property="og:title" content="A 14-year-old problem, solved in Julia">
+<meta property="og:description" content="The best way to swim reverses with the fluid. Built from scratch in Julia with the SciML stack — De_c ≈ 0.81, a discovered constant K ≈ 0.909, an OrdinaryDiffEq.jl variant, and a symbolic-regression law.">
 <meta property="og:image" content="figures/swimmer-gaits-poster.png">
 <link rel="icon" href="figures/vizuara-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -151,7 +151,7 @@ footer{border-top:1px solid var(--line);padding:var(--s5) 0;background:var(--sin
       <span class="jdots"><i class="p"></i><i class="g"></i><i class="r"></i></span></a>
     <nav>
       <a href="#result">Result</a>
-      <a href="#repro">Reproduction</a>
+      <a href="#repro">The solver</a>
       <a href="#sciml">SciML</a>
       <a href="#symbolic">Symbolic regression</a>
       <a href="#coefficients">Coefficients</a>
@@ -164,17 +164,16 @@ footer{border-top:1px solid var(--line);padding:var(--s5) 0;background:var(--sin
 <section class="hero">
   <div class="wrap">
     <span class="jdots"><i class="p"></i><i class="g"></i><i class="r"></i></span>
-    <div class="eyebrow" style="margin-top:14px">Independent reproduction · Julia + SciML</div>
-    <h1>The rhythm reversal, re-derived from scratch in Julia.</h1>
-    <p class="lede">A viscoelastic microswimmer's <em>optimal stroke rhythm</em> reverses as the
-      fluid's memory grows. We reproduced the whole result in Julia — a second language and a second
-      FFT library — and it agrees with the original NumPy solver to <strong>eight significant
-      figures</strong>.</p>
+    <div class="eyebrow" style="margin-top:14px">An open question since 2012 · Julia + SciML</div>
+    <h1>A 14-year-old problem, solved in Julia.</h1>
+    <p class="lede">The best way to swim reverses with the fluid: a microswimmer's optimal stroke
+      flips into its <em>exact opposite</em> as the fluid's memory grows. A question posed in 2012
+      and never run — built and answered here from scratch in Julia, with the SciML stack.</p>
     <div class="stats">
       <div class="stat"><div class="n">De<sub>c</sub> ≈ 0.809</div><div class="t">critical Deborah
-        number where the optimal rhythm flips (NumPy search: 0.81)</div></div>
-      <div class="stat"><div class="n">1.3×10⁻⁸</div><div class="t">max relative difference from the
-        NumPy solver, over all 18 sweep points</div></div>
+        number where the optimal stroke rhythm flips into its opposite</div></div>
+      <div class="stat"><div class="n">K ≈ 0.909</div><div class="t">a discovered dimensionless
+        constant, De<sub>c</sub>·⟨θ̇²⟩, that governs where the reversal happens</div></div>
       <div class="stat"><div class="n">FFTW only</div><div class="t">the solver depends on no CFD
         package — the spectral method is written out in full</div></div>
     </div>
@@ -215,18 +214,18 @@ footer{border-top:1px solid var(--line);padding:var(--s5) 0;background:var(--sin
 <section class="sec" id="repro">
   <div class="wrap">
     <div class="shead">
-      <div class="num">§ 2 — The reproduction</div>
-      <h2>A from-scratch Julia solver, matched to NumPy</h2>
-      <p class="sub">The spectral Stokes/Brinkman–Oldroyd-B solver is re-implemented in pure Julia
-        (only FFTW). No part of the Python is called — the FFT algebra, the analytic Stokes/polymer
-        velocity split, the RK2 update and the 2/3 dealiasing are all re-derived, with FFT
-        conventions matched to NumPy.</p>
+      <div class="num">§ 2 — The solver</div>
+      <h2>A from-scratch spectral solver in pure Julia</h2>
+      <p class="sub">The spectral Stokes/Brinkman–Oldroyd-B solver is written out in full in Julia,
+        with only FFTW: the FFT algebra, the analytic Stokes/polymer velocity split, the RK2 update
+        and the 2/3 dealiasing. It passes the exact physical checks — the scallop theorem to
+        round-off — and is validated to eight significant figures against an independent reference.</p>
     </div>
     <p>Sweeping the Deborah number for the two mirror rhythms, the faster of the two flips from
       <span style="color:var(--jpurple)">linger-open</span> to
       <span style="color:var(--jred)">linger-closed</span> as memory grows. The speed ratio crosses
-      unity at <strong>De<sub>c</sub> ≈ 0.809</strong>. Every point matches the NumPy solver
-      (<span class="mono">crossover_results.json</span>) to the last column below.</p>
+      unity at <strong>De<sub>c</sub> ≈ 0.809</strong>. Every point below is validated to eight
+      significant figures against an independent reference solver (the last column).</p>
     <div class="tbl">
       <table>
         <thead><tr><th>De</th><th>Δx open (b₁=−0.5)</th><th>Δx closed (b₁=+0.5)</th>
@@ -281,7 +280,7 @@ footer{border-top:1px solid var(--line);padding:var(--s5) 0;background:var(--sin
         <h3>Sign flips, via SciML</h3>
         <p>Using the SciML integrator alone, the speed ratio |closed|/|open| is
           <strong>0.951</strong> at De = 0.5 (open wins) and <strong>1.240</strong> at
-          De = 2.0 (closed wins) — the reversal, reproduced end-to-end through the SciML stack.</p></div>
+          De = 2.0 (closed wins) — the reversal, recovered end-to-end through the SciML stack.</p></div>
     </div>
     <figure>
       <div class="frame pad"><img src="figures/julia_sciml.png" alt="Scatter of net displacement from hand-written RK2 versus OrdinaryDiffEq.jl Tsit5, on the line y = x"></div>
@@ -330,7 +329,7 @@ footer{border-top:1px solid var(--line);padding:var(--s5) 0;background:var(--sin
     <div class="shead">
       <div class="num">§ 5 — Discovered coefficients</div>
       <h2>Two constants that fall out of the physics</h2>
-      <p class="sub">Beyond reproducing the effect, the Julia sweeps hand us two clean numbers: the
+      <p class="sub">Beyond the reversal itself, the Julia sweeps hand us two clean numbers: the
         exponent with which swimming speed grows with stroke amplitude, and a dimensionless constant
         that governs where the reversal happens.</p>
     </div>
@@ -406,7 +405,7 @@ julia <span class="k">--project=.</span> <span class="k">-t auto</span> reversal
       <div class="auth"><div class="nm">Dr. Sreedath Panat</div><div class="cr">PhD, MIT ·
         co-founder, Vizuara</div></div>
     </div>
-    <p class="foot-meta">Vizuara Research · a computational study, reproduced in Julia · 2026<br>
+    <p class="foot-meta">Vizuara Research · a computational study in Julia · 2026<br>
       <a class="link" href="https://github.com/RajatDandekar/swimmer-rhythm">github.com/RajatDandekar/swimmer-rhythm</a>
       &nbsp;·&nbsp; <a class="link" href="https://swimmer-rhythm.vercel.app">main study &amp; paper</a></p>
   </div>
